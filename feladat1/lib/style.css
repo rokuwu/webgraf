@@ -1,0 +1,9 @@
+.intro img{
+    float: left;
+    max-width: 50%;
+    padding: 0 20px;
+}
+
+body{
+    text-align: justify;
+}
