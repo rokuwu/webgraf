@@ -1,9 +1,30 @@
-.intro img{
+.intro img {
     float: left;
     max-width: 50%;
     padding: 0 20px;
 }
 
-body{
+body {
     text-align: justify;
+    font-family: Arial;
+}
+
+.kep {
+    width: 25vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#hehe {
+    width: 100vw;
+}
+
+.cöveg {
+    margin-left: 25px;
+    font-family: Century;
+    margin-right: auto;
+}
+
+ul {
+    font-family: Cambria;
 }
