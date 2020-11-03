@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bemutatkozó</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./lib/style.css">
+    <link rel="stylesheet" href="./lib/css/style.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body data-spy="scroll" data-target/>
     <div class="container-fluid">
         <h1 class="my-3">Két állapotú automata bemutatkozó feladat</h1>
 
-        <p>A csapatunk iskolája: <a href="http://www.njszki.hu/">BMSZC Neumann János Informatikai Technikum</a>, 1144 Budapest, Kerepesi út 124.</p>
+        <p>A csapatunk iskolája: <a href="http://www.njszki.hu/" target="_blank">BMSZC Neumann János Informatikai Technikum</a>, 1144 Budapest, Kerepesi út 124.</p>
 
         <div class="row">
             <div id="Akos" class="col-sm-4 intro">
@@ -63,7 +63,14 @@
         </div>
         
         <h3>Csapatkép:</h3>
-        <img src="./img/tímpfotó.png" alt="csapatkép" class="kep">   
+
+        <img src="./img/tph.png" id="team-img" alt="Csapatkép" class="kep">   
+        <div id="open-pic" class="modal">
+            <span class="close" id="close">&times;</span>
+            <img class="modal-content" id="team-img-o">
+        </div>
+
+        <script src="./lib/js/openImg.js"></script>
     </div>
 </body>
 </html>
