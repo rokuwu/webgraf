@@ -11,17 +11,8 @@ body {
 
 .kep {
     width: 25vw;
+    display: block;
     margin-left: auto;
-    margin-right: auto;
-}
-
-#hehe {
-    width: 100vw;
-}
-
-.cöveg {
-    margin-left: 25px;
-    font-family: Century;
     margin-right: auto;
 }
 
