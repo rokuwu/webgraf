@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var eredmeny;
+        var eletkor = prompt("Adj meg egy életkort!");
+
+        if(isFinite(eletkor) && eletkor != "" && parseInt(eletkor) != 0){
+            if(parseInt(eletkor)==0){
+                eredmeny = "A bit még meg sem született!";
+            }
+            else if(parseInt(eletkor)>0 && parseInt(eletkor)<6){
+                eredmeny = "A bit az általános iskola előtt jár.";
+            }
+            else if(parseInt(eletkor)>=6 && parseInt(eletkor)<14){
+                eredmeny = "A bit általános iskolás.";
+            }
+            else if(parseInt(eletkor)>=14 && parseInt(eletkor)<18){
+                eredmeny = "A bit középiskolás.";
+            }
+            else if(parseInt(eletkor)>=18){
+                eredmeny = "A bit már kijárta a középiskolát.";
+            }
+        }
+        else{
+            eredmeny = "Nem jó számot adtál meg!";
+        }
+
+        document.write(eredmeny);
+    </script>
+</body>
+</html>
