@@ -1,11 +1,13 @@
 /* feladat 1/1 */
 
 /* Does the Cool Anim OwO */
+
+/* #181a85, #3c1885, #621885, #9014a6, #ab0c93, #9014a6, #621885, #3c1885, #181a85  */
 body {
-    background: linear-gradient(270deg, #1441a3, #2514a3, #3b088e, #7f12bd, #c80fe6, #7f12bd, #3b088e, #2514a3, #1441a3);
+    background: linear-gradient(270deg, #C8DDE7, #FFFFFF, #EDF5F9, #99BBCC, #6590A5, #99BBCC, #EDF5F9, #FFFFFF, #C8DDE7);
     background-size: 1800% 1800%;
 
-    animation: background-anim 20s ease infinite;
+    animation: background-anim 60s ease infinite;
 }
 
 @keyframes background-anim {
