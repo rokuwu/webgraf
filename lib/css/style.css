@@ -1,5 +1,19 @@
 /* feladat 1/1 */
 
+/* Does the Cool Anim OwO */
+body {
+    background: linear-gradient(270deg, #1441a3, #2514a3, #3b088e, #7f12bd, #c80fe6, #7f12bd, #3b088e, #2514a3, #1441a3);
+    background-size: 1800% 1800%;
+
+    animation: background-anim 20s ease infinite;
+}
+
+@keyframes background-anim {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
 .intro img {
     float: left;
     max-width: 50%;
