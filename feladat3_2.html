@@ -3,20 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Feladat 3/2</title>
 </head>
 <body>
     <script>
         var a=prompt("Adj meg egy egész számot!");
         var b=prompt("Adj meg egy egész számot!");
         var c=prompt("Adj meg egy egész számot!");
+        var array=[a,b,c];
+        var i=0;
+        var temp=a;
+        var temp2=a.length;
+
         var eredmeny;
 
         if(isFinite(a) && isFinite(b) && isFinite(c)){
-            
-        }
-        else{
-            eredmeny = "Helytelen szám!";
+            //mindehárom egyenlő hosszú
+            if(a.length == b.length && a.length == c.length){
+                //legkisebb keresése
+                for(i=0;i<array.length;i++){
+                    if(temp>array[i]){
+                        temp=array[i];
+                    }
+                }
+
+                document.write("legkisebb szám: " + temp);
+            }
+            //a b egyenlő h
+            else if(a.length == b.length){
+                if(a<b){
+                    document.write("legkisebb szám: " + a);
+                }
+                else{
+                    document.write("legkisebb szám: " + b);
+                }
+            }
+            //a c egyenlő h
+            else if(a.length == c.length){
+                if(a<c){
+                    document.write("legkisebb szám: " + a);
+                }
+                else{
+                    document.write("legkisebb szám: " + c);
+                }
+            }
+            //b c egyenlő h
+            else if(b.length == c.length){
+                if(b<c){
+                    document.write("legkisebb szám: " + b);
+                }
+                else{
+                    document.write("legkisebb szám: " + c);
+                }
+            }
+            //van nagyobb
+            else{
+                temp=a;
+                //leghosszabb keresése
+                for(i=0;i<array.length;i++){
+                    if(temp2<array[i].length){
+                        temp2=array[i].length;
+                        temp = array[i];
+                    }
+                }
+
+                document.write("leghosszabb szám: " + temp);
+            }
         }
     </script>
 </body>

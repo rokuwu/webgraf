@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body onload="calcTriangle()">
+    <h1 id="result"></h1>
+</body>
+
+<script> /* The spaghetti that does the magic */
+    function calcTriangle(){
+        let a = prompt("Add meg az A oldalt!");
+        let b = prompt("Add meg a B oldalt!");
+        let c = prompt("Add meg a C oldalt!");
+
+        let szog = c*c - a*a - b*b
+
+        if(szog == 0){
+            //console.log("Egyenlő 0-val!");
+            var result = document.createTextNode("Derékszög!");
+        };
+        if(szog >= 0){
+            //console.log("Nagyobb mint 0!");
+            var result = document.createTextNode("Tompaszög!");
+        };
+        if(szog <= 0){
+            //console.log("Kissebb mint 0!");
+            var result = document.createTextNode("Hegyesszög!");
+        };
+        document.getElementById("result").appendChild(result);
+    };
+</script>
+</html>

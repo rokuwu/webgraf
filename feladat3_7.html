@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Feladat 3/7</title>
+</head>
+<body>
+<!--
+    7. Készítsetek programot, amely beolvas két számot, majd kiírja a kettő között az összes páros, egész számot, de visszafelé. Ehhez jól jöhet a -- operátor! (pl. i--) (1111|2 pont)
+-->
+
+    <script>
+        
+    var x = prompt("Adj meg egy egész számot!");
+    var y = prompt("Adj meg egy egész számot!");
+    var temp;
+
+    if(y<x){
+        temp=x;
+        x=y;
+        y=temp;
+    }
+
+    while(y>x){
+        y--;
+
+        if(y%2==0){
+            document.write(y+"\n");
+        }
+    }
+        
+    </script>
+</body>
+</html>

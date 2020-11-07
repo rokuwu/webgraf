@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Feladat 3/6</title>
+</head>
+<body>
+    <!--
+       6. Készítsetek egy programot, amely bekér egy számot, majd megjelenít minden 400-nál kisebb számot, ami osztható a bekért számmal!(1111|2 pont)  
+    -->
+    <script>
+        
+        var x = prompt("Adj meg egy egész számot!");
+        var i;
+
+        //Minden létező kisebb számot 400-nál vagy csak 0-tól?
+
+        for(i=0;i<=400;i++){
+            if(i%x==0){
+                document.write(i + "\n");
+            }
+        }
+        
+    </script>
+</body>
+</html>

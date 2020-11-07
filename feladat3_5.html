@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feladat 3/5</title>
+</head>
+<body>
+    <!-- 
+
+        Feladat: 5. A kodolosuli.hu kezdőoldalán találtok egy animációt (ha mégsem, akkor F5), amelyben
+        egy lézerágyú tüzel az ellenséges űrhajókra, ha azok hatótávolságon belül vannak.
+        Készítsetek olyan programot, amely az ágyú kör alakú hatótávolságának ismeretében
+        megmondja két bekért számról, hogy ha azok egy érkező űrhajó aktuális koordinátái, akkor
+        az űrhajó hatótávolságon belül van vagy kívül. Legyen az ágyú az origóban! Példa: ha a
+        hatótávolság 10, az ellenséges űrhajó koordinátái: 7 és 6, akkor igen, mivel 7*7+6*6=85
+        <=100. De ha az aktuális koordináta 8 és 7, akkor 64+49 >=100, tehát nem érdemes rá lőni.
+        A program szemléltesse is egy rajzzal és felirattal az aktuális esetet! (1111|2 pont)
+
+    -->
+
+<script>
+
+var x = prompt("Add meg az első koordinátát!");
+var y = prompt("Add meg a második koordinátát!");
+var range = prompt("Add meg az ágyú hatótávját!");
+
+x *= x;
+y *= y;
+range *= range;
+
+if(x + y <= range){
+    document.write("Hatótávon belül van a hajó, érdemes rálőni.");
+}
+else{
+    document.write("Hatótávon kívül van a hajó, nem érdemes rálőni.");
+}
+
+</script>
+</body>
+</html>
