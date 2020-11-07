@@ -91,7 +91,25 @@ ul {
 }
 
 /* feladat 1/2 */
+#urlapkep {
+    width: 1880px;
+    margin-left: auto; 
+    margin-right: auto;
+    display: block;
+}
 
+#urlapszoveg {
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: #694848;
+}
+
+li {
+    list-style: none;
+}
 /* feladat 2/1 */
 
 /* feladat 3/1 */
