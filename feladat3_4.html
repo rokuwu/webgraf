@@ -16,26 +16,25 @@ számok 1, 3, 6, és 10, akkor ilyen sorok jelenjenek meg (10100|2 pont):
 3-10=-7
 -->
 <h1>Minden lehetőség:</h1>
-<div id="result">
-</div>
-
+<div id="result"></div>
 </body>
-
 <script>
     function calculateNumbersOwO(){
+        var i;
+        var out = document.getElementById("result");
         var a = prompt("Add meg az A számot!");
         var b = prompt("Add meg a B számot!");
         var c = prompt("Add meg a C számot!");
         var d = prompt("Add meg a D számot!");
-
-        var theotherthingidk = ["a - b", "b - a", "a - c", "c - a", "a - d", "d - a", "b - c", "c - b", "b - d", "d - b", "c - d", "d - c"]
-        var resultsarray = [a - b, b - a, a - c, c - a, a - d, d - a, b - c, c - b, b - d, d - b, c - d, d - c];
-        var results = "";
-        for(i=0; i<resultsarray.length;i++){
-            results = results + theotherthingidk[i] + " = " + resultsarray[i] + "\n";
-        };
-        let node = document.createTextNode(results);
-        document.getElementById("result").appendChild(node);
+        var textarray = ["a - b", "b - a", "a - c", "c - a", "a - d", "d - a", "b - c", "c - b", "b - d", "d - b", "c - d", "d - c"]
+        var resultsarray = [a - b, b - a, a - c, c - a, a - d, d - a, b - c, c - b, b - d, d - b, c - d, d - c];   
+        function displaytextarray() {
+            for (i = 0; i < textarray.length; i++) {
+                out.appendChild(document.createTextNode(textarray[i] + " = " + resultsarray[i]));
+                out.appendChild(document.createElement("br"));
+            }
+        }
+        displaytextarray(textarray);
     }
 </script>
 </html>
