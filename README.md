@@ -20,9 +20,5 @@ Ez a repo a Webgraf verseny-hez van használva, ahova a megoldott (vagy akár f�
   * 3-7 - Status - Done.
   * 3-8 - Status - Done.
   * 3-9 - Status - Done.
-<<<<<<< HEAD
   * 3-10 - Status - Started.
-=======
-  * 3-10 - Status - Yet to be started.
->>>>>>> f6c4dcbf3ad67292ed00a5d429b7fe776ba7930c
   * 3-11 - Status - Done.
