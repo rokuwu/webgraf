@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Csapat logó</title>
+</head>
+<body>
+    <canvas id="canvas" width="1024" height="1024" style="border: 1px solid #000000;"></canvas>
+    <script>
+        var c = document.getElementById("canvas");
+        var ctx = c.getContext("2d");
+        
+        //bal láb
+        ctx.moveTo(100,700);
+        ctx.lineTo(300,470);
+        ctx.stroke();
+        
+        //jobb láb
+        ctx.moveTo(550,800);
+        ctx.lineTo(700,600);
+        ctx.stroke();
+        
+        //felső vonal
+        ctx.moveTo(298,470);
+        ctx.lineTo(701,602);
+        ctx.stroke();
+        ctx.lineWidth = 5;
+
+        //alsó vonal
+        ctx.moveTo(282,490);
+        ctx.lineTo(680,626);
+        ctx.stroke();
+        
+        //kar vonal
+        ctx.moveTo(489,562);
+        ctx.lineTo(740,180);
+        ctx.stroke();
+        
+        //kar karika
+        ctx.beginPath();
+        ctx.arc(759,146,40,0,2 * Math.PI);
+        ctx.fillStyle = "black";
+        ctx.fill();
+        ctx.stroke();
+        
+        //tükröződés karika
+        ctx.beginPath();
+        ctx.arc(781,133,8,0,2 * Math.PI);
+        ctx.fillStyle = "white";
+        ctx.fill();
+        ctx.strokeStyle = "white";
+        ctx.stroke();
+
+        //arnyék vonal
+        ctx.beginPath();
+        ctx.moveTo(488,560);
+        ctx.lineTo(900,500);
+        ctx.strokeStyle = "grey";
+        ctx.stroke();
+
+        //árnyék ovál 
+        ctx.beginPath();
+        ctx.arc(920,495,26,0,2 * Math.PI);
+        ctx.fillStyle = "grey";
+        ctx.fill();
+        ctx.strokeStyle = "grey";
+        ctx.stroke();
+
+        // 1
+        ctx.beginPath();
+        ctx.font = "30px Arial";
+        ctx.strokeStyle = "black";
+        ctx.strokeText("1",710,603);
+
+        // 0
+        ctx.beginPath();
+        ctx.font = "30px Arial";
+        ctx.strokeStyle = "black";
+        ctx.strokeText("0",290,458);
+
+        //két állapotú     ------ ezt valaki csinálja meg pls normálisra ------
+        ctx.beginPath();
+        ctx.font = "30px Arial";
+        ctx.fillStyle = "black";
+        ctx.fill();
+        
+        ctx.strokeText("Két állapotú",400,603)
+        ctx.stroke();
+
+    </script>
+</body>
+</html>
