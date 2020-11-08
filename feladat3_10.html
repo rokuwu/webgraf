@@ -1,2 +1,137 @@
-<!DOCTYPE html><html><body><canvas id="vaszon" width="400" height="400" style="border:1px solid #c3c3c3;"></canvas><script>function rajzol(){var c= document.getElementById("vaszon");var ctx = c.getContext("2d");
-    var x=document.getElementById("x").value;var y=document.getElementById("y").value;var r=document.getElementById("r").value;ctx.beginPath(); ctx.arc(x,y,r,0,2*Math.PI);ctx.stroke();}function torles(){var c = document.getElementById("vaszon");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height);}</script><p id="eredmeny">Ide kerül az eredmény</p><form>X: <input type="text" id="x"> Y: <input type="text" id="y"> R: <input type="text" id="r"></br><input type="button" value="Rajzolás" onclick="rajzol()"><input type="button" value="Törlés" onclick="torles()"></form></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olimpiai ötkarika</title>
+</head>
+<body onload="redraw()">
+    <canvas width="500" height="500" id="canvas" style="border: 1px solid; float: left; margin: 0 10px 0 0;"></canvas>
+    
+    <!-- Toggle buttons -->
+    <input type="button" value="Kék" onclick="updateCircles(0)">
+    <input type="button" value="Sárga" onclick="updateCircles(3)">
+    <input type="button" value="Fekete" onclick="updateCircles(1)">
+    <input type="button" value="Zöld" onclick="updateCircles(4)">
+    <input type="button" value="Piros" onclick="updateCircles(2)">
+    <script>
+
+        //By default, let's draw all the circles.
+        var circles = [true, true, true, true, true];
+
+        //Runs when clicking a button.
+        function updateCircles(circle){
+            circles[circle] = !circles[circle];
+            redraw();
+        }
+
+        function redraw(){
+            var c = document.getElementById("canvas");
+            var ctx = c.getContext("2d");
+            var grd;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.font = "25px Times"
+            ctx.textAlign = "center"
+
+            //1.sor
+
+            //kék
+            if(circles[0] == true){
+                grd = ctx.createLinearGradient(0,0,0,200);
+                grd.addColorStop(0,"blue");
+                grd.addColorStop(1,"yellow");
+
+                ctx.beginPath();
+                ctx.arc(100,100,70,0,2*Math.PI);
+                //ctx.strokeStyle = "blue";
+                ctx.fillStyle = grd;
+                ctx.fill();
+
+                ctx.fillStyle = "white";
+                ctx.fillText("Kék",100,100);
+
+                ctx.stroke();
+            };
+
+            //fekete
+            if(circles[1] == true){
+                grd = ctx.createLinearGradient(0,0,0,200);
+                grd.addColorStop(0,"green");
+                grd.addColorStop(0.5,"black")
+                grd.addColorStop(1,"yellow");
+
+                ctx.beginPath();
+                ctx.arc(250,100,70,0,2*Math.PI);
+                //ctx.strokeStyle = "black";
+                ctx.fillStyle = grd;
+                ctx.fill();
+
+                ctx.fillStyle = "white";
+                ctx.fillText("Fekete",250,100);
+
+                ctx.stroke();
+            };
+
+            //piros
+            if(circles[2] == true){
+                grd = ctx.createLinearGradient(0,0,0,200);
+                grd.addColorStop(0,"red");
+                grd.addColorStop(1,"green");
+
+                ctx.beginPath();
+                ctx.arc(400,100,70,0,2*Math.PI);
+                //ctx.strokeStyle = "red";
+                ctx.fillStyle = grd;
+                ctx.fill();
+
+                ctx.fillStyle = "white";
+                ctx.fillText("Piros",400,100);
+
+                ctx.stroke();
+            }
+            //2.sor
+
+            //sárga
+            if(circles[3] == true){
+                grd = ctx.createLinearGradient(0,70,0,270);
+                grd.addColorStop(0,"yellow");
+                grd.addColorStop(0.5,"black")
+                grd.addColorStop(1,"blue");
+
+                ctx.beginPath();
+                ctx.arc(175,170,70,0,2*Math.PI);
+                //ctx.strokeStyle = "yellow";
+                ctx.fillStyle = grd;
+                ctx.fill();
+
+                ctx.fillStyle = "white";
+                ctx.fillText("Sárga",175,170);
+
+                ctx.stroke();
+            };
+
+            //zöld
+            if(circles[4] == true){
+                grd = ctx.createLinearGradient(0,70,0,270);
+                grd.addColorStop(0,"green");
+                grd.addColorStop(0.5,"black")
+                grd.addColorStop(1,"red");
+
+                ctx.beginPath();
+                ctx.arc(322,170,70,0,2*Math.PI);
+                //ctx.strokeStyle = "green";
+                ctx.fillStyle = grd;
+                ctx.fill();
+
+                ctx.fillStyle = "white";
+                ctx.fillText("Zöld",322,170);
+
+                ctx.stroke();
+            };
+        };
+        
+        
+    </script>
+</body>
+</html>

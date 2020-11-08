@@ -18,7 +18,7 @@ Ez a repo a Webgraf verseny-hez van használva, ahova a megoldott (vagy akár f�
   * 3-5 - Status - Done.
   * 3-6 - Status - Done.
   * 3-7 - Status - Done.
-  * 3-8 - Status - Stuck.
-  * 3-9 - Status - Yet to be started.
-  * 3-10 - Status - Yet to be started.
-  * 3-11 - Status - Yet to be started.
+  * 3-8 - Status - Done.
+  * 3-9 - Status - Done.
+  * 3-10 - Status - Started.
+  * 3-11 - Status - Done.
