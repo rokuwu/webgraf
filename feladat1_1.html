@@ -7,6 +7,118 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="./lib/css/style.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        /* Does the Cool Anim OwO */
+
+        /* #181a85, #3c1885, #621885, #9014a6, #ab0c93, #9014a6, #621885, #3c1885, #181a85  */
+        body {
+            background: linear-gradient(270deg, #C8DDE7, #FFFFFF, #EDF5F9, #99BBCC, #6590A5, #99BBCC, #EDF5F9, #FFFFFF, #C8DDE7);
+            background-size: 1800% 1800%;
+
+            animation: background-anim 60s ease infinite;
+        }
+
+        @keyframes background-anim {
+            0%{background-position:0% 50%}
+            50%{background-position:100% 50%}
+            100%{background-position:0% 50%}
+        }
+
+        .intro img {
+            float: left;
+            max-width: 50%;
+            padding: 0 20px;
+        }
+
+        body {
+            text-align: justify;
+            font-family: Arial;
+        }
+
+        .kep {
+            width: 170pt;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .kep:hover{
+            opacity: 75%;
+        }
+
+        ul {
+            font-family: Cambria;
+        }
+
+        .modal{
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content{
+            margin: auto;
+            top: 50pt;
+            display: block;
+            width: 90%;
+            max-width: 700px;
+        }
+
+        .modal-content{
+            animation-name: zoom;
+            animation-duration: 0.3s;
+        }
+
+        @keyframes zoom{
+            from {transform: scale(0);}
+            to {transform: scale(1);}
+        }
+
+        .close{
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover, .close:focus{
+            color: #bbbbbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* feladat 1/2 */
+        #urlapkep {
+            width: 1880px;
+            margin-left: auto; 
+            margin-right: auto;
+            display: block;
+        }
+
+        #urlapszoveg {
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: #694848;
+        }
+
+        li {
+            list-style: none;
+        }
+    </style>
 </head>
 <body data-spy="scroll" data-target/>
     <div class="container-fluid">
