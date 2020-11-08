@@ -10,15 +10,22 @@
         var a=parseInt(prompt("Adj meg egy egész számot!"));
         var b=parseInt(prompt("Adj meg egy egész számot!"));
         var c=parseInt(prompt("Adj meg egy egész számot!"));
+        var temp;
 
         if(a<=b){
-            for(a;a<=b;a=a+c){
-                document.write(a + "\n");
+            temp=a;
+            for(a;a<b;a=a+c){
+                if(a!=temp){
+                    document.write(a + "\n");
+                }    
             }
         }
-        else{
-            for(b;b>=a;b=b-c){
-                document.write(a + "\n");
+        if(b<=a){
+            temp=b;
+            for(b;b<a;b=b+c){
+                if(b!=temp){
+                    document.write(b + "\n");
+                }                
             }
         }
 

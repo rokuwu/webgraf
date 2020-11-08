@@ -10,11 +10,8 @@
         var eredmeny;
         var eletkor = prompt("Adj meg egy életkort!");
 
-        if(isFinite(eletkor) && eletkor != "" && parseInt(eletkor) != 0){
-            if(parseInt(eletkor)==0){
-                eredmeny = "A bit még meg sem született!";
-            }
-            else if(parseInt(eletkor)>0 && parseInt(eletkor)<6){
+        if(isFinite(eletkor) && eletkor != "" && parseInt(eletkor) > 0){
+            if(parseInt(eletkor)>0 && parseInt(eletkor)<6){
                 eredmeny = "A bit az általános iskola előtt jár.";
             }
             else if(parseInt(eletkor)>=6 && parseInt(eletkor)<14){

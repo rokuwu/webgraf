@@ -9,7 +9,7 @@ Ez a repo a Webgraf verseny-hez van használva, ahova a megoldott (vagy akár f�
   * 1-2 - Status - Done.
 2. Feladatsor
   * 2-1 - Status - Done.
-  * 2-2 - Status - Few tweaking needed.
+  * 2-2 - Status - Done.
 3. Feladatsor
   * 3-1 - Status - Done.
   * 3-2 - Status - Done.

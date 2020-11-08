@@ -11,13 +11,13 @@
         var ctx = c.getContext("2d");
         
         //bal láb
-        ctx.moveTo(100,700);
-        ctx.lineTo(300,470);
+        ctx.moveTo(300,470);
+        ctx.lineTo(100,700);
         ctx.stroke();
         
         //jobb láb
-        ctx.moveTo(550,800);
-        ctx.lineTo(700,600);
+        ctx.moveTo(700,600);
+        ctx.lineTo(500,830);
         ctx.stroke();
         
         //felső vonal
@@ -50,7 +50,7 @@
         ctx.fill();
         ctx.strokeStyle = "white";
         ctx.stroke();
-
+        
         //arnyék vonal
         ctx.beginPath();
         ctx.moveTo(488,560);
@@ -65,7 +65,7 @@
         ctx.fill();
         ctx.strokeStyle = "grey";
         ctx.stroke();
-
+        
         // 1
         ctx.beginPath();
         ctx.font = "30px Arial";
@@ -80,11 +80,13 @@
 
         //két állapotú     ------ ezt valaki csinálja meg pls normálisra ------
         ctx.beginPath();
+        ctx.rotate(Math.PI/9.5);
         ctx.font = "30px Arial";
         ctx.fillStyle = "black";
         ctx.fill();
         
-        ctx.strokeText("Két állapotú",400,603)
+        ctx.fillText("Két állapotú",530,450);
+        ctx.fillText("autómata",540,485)
         ctx.stroke();
 
     </script>

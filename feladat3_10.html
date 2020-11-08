@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Hűtőszekrény!</title>
 </head>
-<body onload="openFridge()">
+<body onload="closeFridge()">
     <!--
         10. Egy informatikus szobájában biztosan van hűtő, viszont "szerencsétekre" áltában nem
         sok minden van benne:, de kóla, sör, vaj, dobozban süti biztosan. :-) Rajzoljátok meg
@@ -17,7 +17,7 @@
     <input type="button" value="Open / Close the Fridge." onclick="determineDraw()">
 
     <script>
-        var fridgeOpen = true; // Open by default.
+        var fridgeOpen = false; // Closed by default.
 
         function determineDraw(){
             fridgeOpen = !fridgeOpen

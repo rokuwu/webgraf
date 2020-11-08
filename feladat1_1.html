@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bemutatkozó</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./lib/css/style.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style>
         /* Does the Cool Anim OwO */
@@ -179,6 +178,7 @@
     <div class="container py-1 bg-light text-dark rounded">
         <h3>Csapatkép:</h3>
 
+        <!-- A csapatról nincsen összefüggő képünk, mivel a verseny ideje alatt nem volt alkalmunk csinálni egyet. Ezért egy logót használtunk helyette. -->
         <img src="./img/tph_scaled.png" id="team-img" alt="Csapatkép" class="kep">   
         <div id="open-pic" class="modal">
             <span class="close" id="close">&times;</span>
@@ -190,6 +190,7 @@
             var img = document.getElementById("team-img");
             var modalImg = document.getElementById("team-img-o");
             var closeBtn = document.getElementById("close");
+            var bg = document.getElementById("open-pic");
 
             img.onclick = function(){
                 modal.style.display = "block";
@@ -197,6 +198,10 @@
             }
 
             closeBtn.onclick = function(){
+                modal.style.display = "none";
+            }
+
+            bg.onclick = function(){
                 modal.style.display = "none";
             }
         </script>
