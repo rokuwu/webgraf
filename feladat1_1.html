@@ -29,7 +29,6 @@
                     <li>Calisthenics edzés</li>
                     <li>Videójátékok</li>
                     <li>Biciklizés</li>
-                    <li>Mémelés</li>
                 </ul>
             </div>
             <div id="Sebi" class="col-sm-4 intro">
@@ -65,7 +64,7 @@
         </div>
     </div>  
         
-    <div class="container py-1 bg-light text-dark rounded"
+    <div class="container py-1 bg-light text-dark rounded">
         <h3>Csapatkép:</h3>
 
         <img src="./img/tph_scaled.png" id="team-img" alt="Csapatkép" class="kep">   
@@ -74,7 +73,21 @@
             <img class="modal-content" id="team-img-o">
         </div>
 
-        <script src="./lib/js/openImg.js"></script>
+        <script>
+            var modal = document.getElementById("open-pic");
+            var img = document.getElementById("team-img");
+            var modalImg = document.getElementById("team-img-o");
+            var closeBtn = document.getElementById("close");
+
+            img.onclick = function(){
+                modal.style.display = "block";
+                modalImg.src = "img/tph.png";
+            }
+
+            closeBtn.onclick = function(){
+                modal.style.display = "none";
+            }
+        </script>
     </div>
 </body>
 </html>
