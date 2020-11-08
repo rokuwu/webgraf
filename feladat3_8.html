@@ -11,9 +11,17 @@
         var b=parseInt(prompt("Adj meg egy egész számot!"));
         var c=parseInt(prompt("Adj meg egy egész számot!"));
 
-        for(a;a<=b;a=a+c){
-            document.write(a + "\n");
+        if(a<=b){
+            for(a;a<=b;a=a+c){
+                document.write(a + "\n");
+            }
         }
+        else{
+            for(b;b>=a;b=b-c){
+                document.write(a + "\n");
+            }
+        }
+
     </script>
 </body>
 </html>
