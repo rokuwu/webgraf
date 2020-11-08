@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Hűtőszekrény!</title>
+</head>
+<body onload="openFridge()">
+    <!--
+        10. Egy informatikus szobájában biztosan van hűtő, viszont "szerencsétekre" áltában nem
+        sok minden van benne:, de kóla, sör, vaj, dobozban süti biztosan. :-) Rajzoljátok meg
+        alakzatok segítségével a hűtő elrendezését úgy, hogy azonosíthatóak legyenek benne az
+        "ételek" és italok! Távirányító (gombok) segítségével ki lehessen nyitni a hűtőt. Ekkor
+        lehessen látni a tartalmát! (1 1110|2 pont)
+    -->
+    <canvas width="500" height="500" id="canvas" style="border: 1px solid; float: left; margin: 0 10px 0 0;"></canvas>
+    <input type="button" value="Open / Close the Fridge." onclick="determineDraw()">
+
+    <script>
+        var fridgeOpen = true; // Open by default.
+
+        function determineDraw(){
+            fridgeOpen = !fridgeOpen
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "black";
+            ctx.strokeStyle = "black";
+            ctx.font = "20px Arial";
+            switch (fridgeOpen){
+                case true:
+                    openFridge();
+                    break;
+                case false:
+                    closeFridge();
+                    break;
+            }
+            
+        }
+
+        var c = document.getElementById("canvas");
+        var ctx = c.getContext("2d");
+        ctx.font = "20px Arial";
+        var grd;
+
+        function openFridge(){
+            console.log("Opened the fridge.");
+            ctx.strokeRect(100,100,150,250); // Bal ajtó
+            ctx.strokeRect(250,100,150,250); // Jobb ajtó
+            ctx.strokeRect(120,300,115,30); // Bal tartó
+            ctx.strokeRect(250,160,150,0);
+            ctx.strokeRect(250,225,150,0);
+            ctx.strokeRect(250,290,150,0);
+
+            // Stuff inside the fridge
+
+            // Coke
+            ctx.fillRect(260, 225, 15, -30);
+            ctx.beginPath();
+            ctx.arc(267.5,194,7,0,2*Math.PI);
+            ctx.strokeRect(265,183,5,5);
+            
+            ctx.fillStyle = "red";
+            ctx.fillRect(260,215,15,-10);
+            ctx.stroke();
+
+            // Beer
+            ctx.fillStyle = "#5c3e11";
+            ctx.fillRect(280, 289,18,-35);
+            ctx.fillRect(285, 255,8,-15);
+            
+            ctx.fillStyle = "#bab513";
+            ctx.fillRect(280,280,18,-15);
+
+            ctx.fillStyle = "#68753f";
+            ctx.fillRect(285, 248, 8, -8);
+            
+            // Butter
+            ctx.fillStyle = "#d9d214";
+            ctx.fillRect(290,159,50,-15);
+
+            ctx.fillStyle = "#757572";
+            ctx.fillRect(285,150,60,5);
+            ctx.fillRect(290,159,50,-5);
+        
+            // Sütemény
+            ctx.fillStyle = "#876d36";
+            ctx.strokeStyle = "#876d36";
+            ctx.beginPath();
+            ctx.moveTo(320,224);
+            ctx.lineTo(320, 200);
+            ctx.lineTo(350,224);
+            ctx.fill();
+            ctx.stroke();
+
+            ctx.fillStyle = "#540b29";
+            ctx.strokeStyle = "#540b29";
+            ctx.beginPath();
+            ctx.moveTo(325,221);
+            ctx.lineTo(325, 210);
+            ctx.lineTo(340,221);
+            ctx.fill();
+            ctx.stroke();
+
+        };
+        function closeFridge(){
+            console.log("Closed the fridge.");
+            ctx.strokeRect(250,100,150,250);
+            ctx.strokeRect(350,200,20,50);
+            ctx.fillText("samsung", 285, 150)
+            ctx.font = "15px Arial";
+            ctx.fillText("smart fridzs", 287, 170)
+        };
+    </script>
+</body>
+
+</html>
