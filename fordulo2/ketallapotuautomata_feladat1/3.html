@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        input[type="number"],input[type=button] {
+            display:block;
+            margin: 5px 0;
+        }
+    </style>
+    <title>Feladat 3</title>
+</head>
+<body>
+    <label for="num1">Szám 1</label>
+    <input type="number" id="num1">
+    <label for="num2">Szám 2</label>
+    <input type="number" id="num2">
+    <label for="azonos">Két szám azonos szemjegyeinek száma?</label>
+    <input type="checkbox" name="azonos" id="azonos">
+    <input type="button" name="indit" id="indit" value=Indítás>
+
+    <script>
+        var n=document.getElementById("num1");
+        var m=document.getElementById("num2");
+        var indit=document.getElementById("indit");
+
+        function matching_char(x, y){
+            if(y.length>x.length){
+                let temp=x;
+                x=y;
+                y=temp;
+            }
+
+            var egyezo=0;
+            var i=0;
+                        
+            while(i<x.length){
+                if(x[i]==y[i]){
+                    egyezo++;                    
+                    console.log(x[i]+"="+y[i]);
+                }
+                i++;
+            }
+
+            return egyezo;
+        }
+
+        function in_both(x, y){
+            var i=0;
+            var egyezo=0;
+
+            if(y.length>x.length){
+                let temp=x;
+                x=y;
+                y=temp;
+            }
+            
+            while(i<x.length){
+                
+            }
+        }
+
+        document.write(matching_char("5010204", "5020336"));
+        
+    </script>
+</body>
+</html>
