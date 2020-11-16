@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feladat 1-1</title>
+</head>
+<body>
+    <script>
+        var n=prompt("Adj meg egy egész számot!");
+        var m=prompt("Adj meg egy egész számot!");
+
+        function is_prime(x){
+            var eredmeny=true;
+
+            if(x==1){
+                eredmeny=false;
+            }
+            else{
+                for(var i=2;i<x;i++){
+                    if(x%i==0){
+                        eredmeny=false;
+                        break;
+                    }
+                }
+            }
+
+            return eredmeny;
+        }
+
+        if(n<=m){            
+            for(n;n<m;n++){
+                if(is_prime(n)){
+                    document.write(n+"\n");
+                }
+            }
+        }
+        if(m<=n){            
+            for(m;m<n;m++){
+                if(is_prime(m)){
+                    document.write(m+"\n");
+                }
+            }
+        }
+    </script>
+</body>
+</html>

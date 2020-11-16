@@ -4,6 +4,8 @@ Ez a repo a Webgraf verseny-hez van használva, ahova a megoldott (vagy akár f�
 
 ## Feladatok:
 
+1. Forduló
+
 1. Feladatsor
   * 1-1 - Status - Done.
   * 1-2 - Status - Done.
@@ -22,3 +24,19 @@ Ez a repo a Webgraf verseny-hez van használva, ahova a megoldott (vagy akár f�
   * 3-9 - Status - Done.
   * 3-10 - Status - Done.
   * 3-11 - Status - Done.
+
+2. Forduló
+
+1. Feladatsor
+  * 1-1 - Status - Work in progress
+  * 1-2 - Status - None
+  * 1-3 - Status - None
+  * 1-4 - Status - None
+  * 1-5 - Status - None
+  * 1-6 - Status - None
+  * 1-7 - Status - None
+  * 1-8 - Status - None
+2. Feladatsor
+  * 2-1 - Status - None
+  * 2-2 - Status - None
+  * 2-3 - Status - None
