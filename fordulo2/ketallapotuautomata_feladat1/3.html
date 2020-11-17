@@ -47,7 +47,6 @@
         }
 
         function in_both(x, y){
-            var i=0;
             var egyezo=0;
 
             if(y.length>x.length){
@@ -56,13 +55,32 @@
                 y=temp;
             }
             
-            while(i<x.length){
-                
+            var xArray=x.split("");
+            var yArray=y.split("");            
+
+            for(var i=0;i<xArray.length;i++){
+                for(var j=0;j<yArray.length;j++){
+                    if(xArray[i]==yArray[j]){
+                        
+
+                        console.log(i+" "+j+" || "+xArray[i]+"="+yArray[j]+" || "+yArray[j]+" törlése");
+                        
+                        yArray.splice(j,1);
+
+                        console.log(yArray);
+                    }
+                }
+
+                //console.log(yArray);
             }
+
+            return egyezo;
         }
 
         document.write(matching_char("5010204", "5020336"));
-        
+        var str="51245";
+        document.write("\n"+str.split(""));
+        document.write("\n"+in_both("5010204", "5020336"));
     </script>
 </body>
 </html>
