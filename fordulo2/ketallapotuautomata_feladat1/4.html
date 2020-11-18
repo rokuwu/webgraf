@@ -6,54 +6,92 @@
     <title>Randomly Generated Even Numbers</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>-->
+    <style>
+        body {
+            background: linear-gradient(270deg, #2b2bb5, #3b2791, #3c1b75);
+            background-size: 600% 600%;
+    
+            -webkit-animation: anim 30s ease infinite;
+            -moz-animation: anim 30s ease infinite;
+            animation: anim 30s ease infinite;
+
+            text-align: center;
+        }
+    
+        @-webkit-keyframes anim {
+            0%{background-position:0% 50%}
+            50%{background-position:100% 50%}
+            100%{background-position:0% 50%}
+        }
+        @-moz-keyframes anim {
+            0%{background-position:0% 50%}
+            50%{background-position:100% 50%}
+            100%{background-position:0% 50%}
+        }
+        @keyframes anim {
+            0%{background-position:0% 50%}
+            50%{background-position:100% 50%}
+            100%{background-position:0% 50%}
+        }
+    </style>
     <script>
         function calc(){
-            var out = document.getElementById("results");
             var num = [];
-            //console.log("Started generating...")
+            var even = [];
+            var evenTrack = 0;
             for(var i = 0; i < 20; i++){
                 num[i] = Math.floor(Math.random()*100);
-                //console.log("Generated: " + num[i]);
-                if(num[i] % 2 == 0){
-                    out.appendChild(document.createTextNode(num[i]));
-                    out.appendChild(document.createElement("br"));
-                    //console.log(num[i] + " IS EVEN!")
+                var temp = compare(num[i]);
+                if(temp != undefined){
+                    even[evenTrack++] = temp;
                 }
-                //console.log(">>>>>>>>>>>>>>>>>>>>>>>");
+                //console.log(even);
+            }
+            //console.log("-------------------------------------");
+            //console.log(num);
+            //console.log(even);
+            //console.log(even.length);
+
+            // Writing out Original numbers
+            for(var i = 0; i < num.length; i++){
+                writeOut("original", num[i]);
+            }
+            // Writing out Even numbers
+            for(var i = 0; i < even.length; i++){
+                writeOut("results", even[i]);
             }
         }
+
+        function compare(arg){
+            if(arg % 2 == 0){
+                return arg;
+            }
+            else{
+                return;
+            }   
+        }
+        
+        function writeOut(id, arg)
+        {
+            out = document.getElementById(id);
+            out.appendChild(document.createTextNode(arg + " "));
+        }
     </script>
-    <style>
-    body {
-        background: linear-gradient(270deg, #2b2bb5, #3b2791, #3c1b75);
-        background-size: 600% 600%;
-
-        -webkit-animation: anim 30s ease infinite;
-        -moz-animation: anim 30s ease infinite;
-        animation: anim 30s ease infinite;
-    }
-
-    @-webkit-keyframes anim {
-        0%{background-position:0% 50%}
-        50%{background-position:100% 50%}
-        100%{background-position:0% 50%}
-    }
-    @-moz-keyframes anim {
-        0%{background-position:0% 50%}
-        50%{background-position:100% 50%}
-        100%{background-position:0% 50%}
-    }
-    @keyframes anim {
-        0%{background-position:0% 50%}
-        50%{background-position:100% 50%}
-        100%{background-position:0% 50%}
-    }
-    </style>
 </head>
 <body onload="calc()">
     <div class="container my-2 bg-dark text-light rounded">
-        <h1>Randomly Generated Even Numbers</h1>
-        <h5 id="results"></h5>
+        <div class="row">
+            <div class="col-sm-6">        
+                <h3>Generated Numbers</h3>
+                <h5 id="original"></h5>
+            </div>
+            <div class="col-sm-6">
+                <h3>Randomly Generated Even Numbers</h3>
+                <h5 id="results"></h5>
+            </div>
+        </div>
+
+
     </div>
 </body>
 </html>
