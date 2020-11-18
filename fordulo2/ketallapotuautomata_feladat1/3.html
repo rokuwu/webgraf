@@ -18,12 +18,26 @@
     <input type="number" id="num2">
     <label for="azonos">Két szám azonos szemjegyeinek száma?</label>
     <input type="checkbox" name="azonos" id="azonos">
-    <input type="button" name="indit" id="indit" value=Indítás>
+    <input onclick="main()" type="button" name="indit" id="indit" value=Indítás>
+    <p id="eredmeny"></p>
 
     <script>
-        var n=document.getElementById("num1");
-        var m=document.getElementById("num2");
-        var indit=document.getElementById("indit");
+        function main(){
+            var n=document.getElementById("num1").value;
+            var m=document.getElementById("num2").value;
+            var match=[];
+            match=matching_char(n,m);
+            document.getElementById("eredmeny").appendChild(document.createTextNode(`A számok egyezősége: ${match}\n`));
+            document.getElementById("eredmeny").appendChild(document.createElement("br"));
+
+            if(document.getElementById("azonos").checked){
+                var inBoth=[];
+                inBoth=in_both(n,m);
+                
+                document.getElementById("eredmeny").appendChild(document.createTextNode(`Közös karakterek a két számban: ${inBoth}\n`));
+                document.getElementById("eredmeny").appendChild(document.createElement("br"));
+            }
+        }
 
         function matching_char(x, y){
             if(y.length>x.length){
@@ -37,8 +51,7 @@
                         
             while(i<x.length){
                 if(x[i]==y[i]){
-                    egyezo++;                    
-                    console.log(x[i]+"="+y[i]);
+                    egyezo++;
                 }
                 i++;
             }
@@ -46,41 +59,30 @@
             return egyezo;
         }
 
-        function in_both(x, y){
-            var egyezo=0;
-
-            if(y.length>x.length){
-                let temp=x;
-                x=y;
-                y=temp;
-            }
+        function in_both(str1,str2){
+            var chars1=str1.split("");
+            var chars2=str2.split("");
+            var unique1=[...new Set(chars1)];
+            var unique2=[...new Set(chars2)];
+            var duplicate=0;
             
-            var xArray=x.split("");
-            var yArray=y.split("");            
+            if(unique2.length>unique1.length){
+                let temp=unique1;
+                unique1=unique2;
+                unique2=temp;
+            }
 
-            for(var i=0;i<xArray.length;i++){
-                for(var j=0;j<yArray.length;j++){
-                    if(xArray[i]==yArray[j]){
-                        
-
-                        console.log(i+" "+j+" || "+xArray[i]+"="+yArray[j]+" || "+yArray[j]+" törlése");
-                        
-                        yArray.splice(j,1);
-
-                        console.log(yArray);
+            for(var i=0;i<unique1.length;i++){
+                for(var j=0;j<unique2.length;j++){
+                    if(unique1[i]==unique2[j]){
+                        duplicate++;
                     }
                 }
-
-                //console.log(yArray);
             }
 
-            return egyezo;
+            return duplicate;
         }
-
-        document.write(matching_char("5010204", "5020336"));
-        var str="51245";
-        document.write("\n"+str.split(""));
-        document.write("\n"+in_both("5010204", "5020336"));
+        
     </script>
 </body>
 </html>

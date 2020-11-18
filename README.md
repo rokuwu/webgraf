@@ -9,7 +9,7 @@ Ez a repo a Webgraf verseny-hez van használva, ahova a megoldott (vagy akár f�
 1. Feladatsor
   * 1-1 - Status - Done
   * 1-2 - Status - Done
-  * 1-3 - Status - W. i. p.
+  * 1-3 - Status - Done
   * 1-4 - Status - Done
   * 1-5 - Status - None
   * 1-6 - Status - None
