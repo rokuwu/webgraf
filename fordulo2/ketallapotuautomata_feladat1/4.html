@@ -38,43 +38,35 @@
         function calc(){
             var num = [];
             var even = [];
-            var evenTrack = 0;
             for(var i = 0; i < 20; i++){
                 num[i] = Math.floor(Math.random()*100);
-                var temp = compare(num[i]);
-                if(temp != undefined){
-                    even[evenTrack++] = temp;
-                }
-                //console.log(even);
             }
-            //console.log("-------------------------------------");
-            //console.log(num);
-            //console.log(even);
-            //console.log(even.length);
+            even = compare(num);
 
             // Writing out Original numbers
-            for(var i = 0; i < num.length; i++){
-                writeOut("original", num[i]);
-            }
+            writeOut("original", num);
             // Writing out Even numbers
-            for(var i = 0; i < even.length; i++){
-                writeOut("results", even[i]);
-            }
+            writeOut("results", even);
         }
 
         function compare(arg){
-            if(arg % 2 == 0){
-                return arg;
+            var out = [];
+            var temp = 0;
+            for(var i = 0; i < arg.length; i++){
+                if(arg[i] % 2 == 0){
+                    out[temp++] = arg[i];
+                }
             }
-            else{
-                return;
-            }   
+            return out;
         }
         
         function writeOut(id, arg)
         {
             out = document.getElementById(id);
-            out.appendChild(document.createTextNode(arg + " "));
+            var temp = 1;
+            for(var i = 0; i < arg.length; i++){
+                out.appendChild(document.createTextNode(arg[i] + " "));
+            }
         }
     </script>
 </head>
