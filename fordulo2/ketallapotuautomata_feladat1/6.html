@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feladat 6</title>
+    <style>
+        tr{
+            height:100px;
+        }
+        td{
+            width:100px;
+            border: 1px solid;
+            background-color:lightgray;
+        }
+        table{
+            margin: auto;
+            text-align:center;
+            
+        }
+        input{
+            display: block;;
+            margin:20px auto;
+            width:300px;
+            height:75px
+        }
+    </style>
+</head>
+<body id="body" onload="startTimer();">
+    <table>
+        <tr>
+            <td id="00"></td>
+            <td id="01"></td>
+            <td id="02"></td>
+            <td id="03"></td>
+            <td id="04"></td>
+        </tr>
+        <tr>
+            <td id="10"></td>
+            <td id="11"></td>
+            <td id="12"></td>
+            <td id="13"></td>
+            <td id="14"></td>
+        </tr>
+        <tr>
+            <td id="20"></td>
+            <td id="21"></td>
+            <td id="22"></td>
+            <td id="23"></td>
+            <td id="24"></td>
+        </tr>
+        <tr>
+            <td id="30"></td>
+            <td id="31"></td>
+            <td id="32"></td>
+            <td id="33"></td>
+            <td id="34"></td>
+        </tr>
+        <tr>
+            <td id="40"></td>
+            <td id="41"></td>
+            <td id="42"></td>
+            <td id="43"></td>
+            <td id="44"></td>
+        </tr>
+    </table>
+
+    <input onclick="startTimer();" id="restart" type="button" value="Újraindítás">
+    <p id="p"></p>
+
+    <script>
+        var prevCell=[,,];
+        document.getElementById("restart").style.visibility="hidden";
+
+        function selectCell(){
+            var genTime=new Date().getTime();
+            var fromGenTimer=setInterval(clickTimer,1);
+            var t;
+            function clickTimer(){
+                t=new Date().getTime();
+            }
+
+            var coords=[Math.floor(Math.random()*5),Math.floor(Math.random()*5)];
+
+            document.getElementById(`${coords[0]}${coords[1]}`).style.backgroundColor="lightgreen";
+
+            function cellClick(){
+                document.getElementById(`${prevCell[0]}${prevCell[1]}`).removeEventListener("click",cellClick);
+                document.getElementById(`${prevCell[0]}${prevCell[1]}`).style.backgroundColor="lightgray";
+                alert(`Reakcióidő: ${parseFloat((t-genTime)/1000)}`);
+                clearInterval(fromGenTimer);
+
+                document.getElementById("restart").style.visibility="visible";
+            }
+            document.getElementById(`${coords[0]}${coords[1]}`).addEventListener("click",cellClick); //végül nem kell cellClick var, csak simán getElement
+
+            
+            prevCell=coords;
+        }
+
+        function startTimer(){
+            var randTime=(Math.floor(Math.random()*5)+1)*1000;
+            setTimeout(selectCell,randTime);
+        }
+    </script>
+</body>
+</html>
