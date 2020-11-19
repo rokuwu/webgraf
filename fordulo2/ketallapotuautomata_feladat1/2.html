@@ -8,39 +8,25 @@
 <body>
     <script>
         var n=prompt("Adj meg egy egész számot!");
-        
-        function binary_ones(num){
-            var binary="";
+
+        function binary_ones(decNum){
+            var binNum=parseInt(decNum).toString(2);
             var ones=0;
-            
-            while(num>0){
-                if(num%2==0){
-                    binary="0"+binary;
-                }
-                else{
-                    binary="1"+binary;
-                }
 
-                num=Math.floor(num/2);
-                console.log(num + " " + binary);
-            }
-
-            var i=0;
-
-            while(i<binary.length){
-                if(binary[i]==1){
+            for(var i=0;i<binNum.length;i++){
+                if(binNum[i]=="1"){
                     ones++;
                 }
-                
-                i++;
-
-                console.log(num + " " + binary + " " + ones);
-            } 
+            }
 
             return ones;
         }
 
-        document.write(binary_ones(n));
+        var dect=56;
+        var bint=dect.toString(2);
+        //document.write(`Bint: ${bint}`);
+
+        document.write(`Egyesek száma: ${binary_ones(n)}`);
     </script>
 </body>
 </html>
