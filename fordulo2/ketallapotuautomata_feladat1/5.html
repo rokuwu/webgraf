@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feladat 5</title>
+</head>
+<body>
+    <script>
+        var array=[,,,,,];
+        var hexArray=[,,,,,];
+        var binArray=[,,,,,];
+
+        for(var i=0;i<array.length;i++){
+            array[i]=prompt("Adj meg egy egész számot!");
+            binArray[i]=parseInt(array[i]).toString(2);
+            hexArray[i]=parseInt(array[i]).toString(16);
+        }
+
+        document.write(`A megadott számok bináris értéke: ${binArray}; és a hexadecimális értékük: ${hexArray}`);
+    </script>
+</body>
+</html>
