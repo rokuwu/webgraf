@@ -1,0 +1,43 @@
+</head>
+<title>Percmutató</title>
+<script>
+// nagyon spagetti
+
+// === Képbetöltés, vászonra írás
+var ctx, x=0, y=0, width=3, height=100;
+
+function init() {
+
+ctx =document.getElementById("canvas").getContext('2d');
+ctx.translate(600,400);
+ctx.beginPath();
+ctx.arc(0,0,100,0,2*Math.PI);
+ctx.stroke();
+draw();
+setInterval(move,1000); //1 másodpercenként mozdul a mutató
+}
+function draw(){
+    ctx.beginPath();
+    ctx.arc(0,0,100,0,2*Math.PI);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(x,y);
+    ctx.lineTo(x,y-100);
+    ctx.stroke();
+}
+function move(){
+ctx.clearRect(x+1.2,y-100,-width,height);
+// vászon törlése
+// Elforgatás 6 fokkal, mert 1 perc = 360/60 fok
+ctx.rotate(6*Math.PI/180);
+draw();
+}
+
+
+</script>
+</head>
+
+<body onLoad="init();">
+<canvas id="canvas" width="1200" height="1200">
+</canvas>
+</body>
