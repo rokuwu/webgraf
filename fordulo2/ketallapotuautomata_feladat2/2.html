@@ -3,9 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Feladat 2</title>
+    <style>
+        div{
+            display:block;
+            margin: 10px 0;
+        }
+        form{
+            margin-left: 10px;
+            display:inline-block;
+        }
+    </style>
 </head>
 <body>
-    
+    <canvas id="canvas" width=1200 height=600 style='border:solid 1px; background-image: url("./img/galaxis1.jpg"); background-repeat: no-repeat; background-size: cover; display:none;'>
+
+    </canvas>
+
+    <form id="bg-select-form">
+        <label for="bg-select">Háttér kiválasztása:</label>
+        <div id="bg-select-div">
+            <select name="bg-select" id="bg-select">
+                <option default value="galaxis1">Andromeda</option>
+                <option value="galaxis2">Triangulum</option>
+                <option value="galaxis3">Interstellar</option>
+            </select>
+            <input type="button" id="button" value="Kiválaszt">
+        </div>
+    </form>
+
+    <form id="bet-form">
+        <label for="bet-select">Fogadás megtélele</label>
+        <div id="bet-div">
+            <select name="bet-select" id="bet-select">
+                <option value="urhajo1">Űrhajó 1</option>
+                <option value="urhajo2">Űrhajó 2</option>
+                <option value="urhajo3">Űrhajó 3</option>
+            </select>
+            <input id="bet" type="button" value="Fogadás">
+        </div>
+    </form>
+
+    <form id="start-form" style="display:none">
+        <input id="start" type="button" value="Start">
+    </form>
+
+    <script>
+        const canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        var canvasWidth = 1200;
+        var bet;
+
+        // bg select
+        document.getElementById("button").onclick = () => {
+            canvas.style.backgroundImage = `url("./img/${document.getElementById("bg-select").value}.jpg")`;
+            document.getElementById("canvas").style.display="block";
+        }
+
+        //fogadás
+        document.getElementById("bet").onclick = () => {
+            bet = document.getElementById("bet-select").value;
+            switch(bet){
+                case "urhajo1":
+                    betMsg = "harmadik űrhajó";
+                break;
+                case "urhajo2":
+                    betMsg = "harmadik űrhajó";
+                break;
+                case "urhajo3":
+                    betMsg = "harmadik űrhajó";
+                break;
+            }
+            alert(`A(z) ${betMsg}ra fogadtál.`);
+
+            document.getElementById("start-form").style.display = "inline-block";
+        }
+
+        document.getElementById("start").onclick = () => {
+            //távolság generálás
+            canvasWidth = Math.floor(Math.random() * ((window.innerWidth - 100) - 900 + 1) ) + 900;
+            document.getElementById("canvas").width = canvasWidth;
+
+            //versenyző generálás
+            var urhajo1 = {
+                velocity:1,
+                model:"./img/urhajo1.jpg",
+                x:0,
+                y:0,
+                bet:0
+                //move:function(){Move()};
+            }
+            var urhajo2 = {
+                velocity:1,
+                model:"./img/urhajo2.jpg",
+                x:0,
+                y:200,
+                bet:0
+                //move:function(){Move()};
+            }
+            var urhajo3 = {
+                velocity:1,
+                model:"./img/urhajo3.jpg",
+                x:0,
+                y:400,
+                bet:0
+                //move:function(){Move()};
+            }
+
+            //kirajzolás
+            ctx.drawImage()
+
+            //sebesség generálás
+
+            //mozgatás
+            //célbaérés
+
+            //kiértékelés
+        }
+
+
+    </script>
 </body>
 </html>
