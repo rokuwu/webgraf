@@ -16,6 +16,6 @@ Ez a repo a Webgraf verseny-hez van használva, ahova a megoldott (vagy akár f�
   * 1-7 - Status - Done
   * 1-8 - Status - Done
 2. Feladatsor
-  * 2-1 - Status - None
-  * 2-2 - Status - None
-  * 2-3 - Status - None
+  * 2-1 - Status - Started
+  * 2-2 - Status - Done
+  * 2-3 - Status - Done

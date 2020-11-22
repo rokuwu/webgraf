@@ -6,53 +6,59 @@
     <title>Feladat1</title>
 </head>
 <body>
+    <!-- 1. Keressetek 4 darab olyan képet, amelyen az ég látszódik (szép kék, felhőkkel), valamint Daenerys 3 sárkánya. 
+        Készítsetek egy olyan "háttérképet", amelyben a sárkány egymástól függetlenül folyamatosan repül, a háttér pedig változtatható egy gombra kattintással. 
+        Ha a sárkányok elérik a képernyő szélét, akkor visszafelé repülnek.  
+        Érdemes tudni, hogy a sárkányok nem tudnak hátrafelé repülni! A sárkányok átlós írányban repülnek! (111100|2 pont) 
+    -->
+    <canvas width="1000" height="500" id="canvas" style="border: 1px solid; float: left; margin: 0 10px 0 0;"></canvas>
+    <form>
+        Háttérkép:
+      <input type="button" value="Háttércsere   " onclick="changeBackground();" />
+    </form>
     <script>
-        let x;
-        let y;
+        const canvas=document.getElementById('canvas');
+        const context=canvas.getContext('2d');
+        
+        // Set resolutions
+        const dragonW = 200;
+        const dragonH = 150;
+        const backgroundW = 1280;
+        const backgroundH = 720;
 
-        let xseb;
-        let yseb;
+        var selectedBackground = 1;
 
-        let dragon;
+        let dragon1 = new Image();
+        let dragon2 = new Image();
+        let dragon3 = new Image();
 
-        function preload() {
-            dragon = loadImage('img\dragon1.png');
-        }
+        //Init dragons
+        dragon1.src = './img/dragon1.png';
+        dragon1.onload = function() {
+            context.drawImage(dragon1, dragonW, dragonH);
+        };
+        dragon2.src = './img/dragon2.png';
+        dragon2.onload = function() {
+            context.drawImage(dragon2, dragonW+100, dragonH-50);
+        };
+        dragon3.src = './img/dragon3.png';
+        dragon3.onload = function() {
+            context.drawImage(dragon3, dragonW-130, dragonH+30);
+        };
 
-        function setup() {
-            createCanvas(1000, 1000);
-            x = random(width);
-            y = random(height);
-            xseb = 10;
-            yseb = 10;
-        }
+        
+        document.getElementById("canvas").style.backgroundImage='url(./img/eg1.jpg)';
 
-        function draw() {
-            background(0);
-            image(dragon, x, y);
-            
-            x = x + xseb;
-            y = y + yseb;
+        function changeBackground(){
+            var picUrl = `./img/eg${++selectedBackground}.jpg`
+            console.log(picUrl);
+            document.getElementById("canvas").style.backgroundImage=`url(${picUrl})`;
 
-            if (x + dragon.width >= width) {
-                xseb = -xseb;
-                x = width - dragon.width;
-            }
-            else if (x <= 0) {
-                xseb = -xseb;
-                x = 0;
-            }
-
-            if (y + dragon.height >= height) {
-                yseb = -yseb;
-                y = height - dragon.height;
-            }
-            else if (x <= 0) {
-                yseb = -yseb;
-                y = 0;
-            }
+            selectedBackground = selectedBackground === 4 ? selectedBackground = 0 : selectedBackground; 
         }
 
     </script>
+
+    
 </body>
 </html>
