@@ -6,6 +6,53 @@
     <title>Feladat1</title>
 </head>
 <body>
-    
+    <script>
+        let x;
+        let y;
+
+        let xseb;
+        let yseb;
+
+        let dragon;
+
+        function preload() {
+            dragon = loadImage('img\dragon1.png');
+        }
+
+        function setup() {
+            createCanvas(1000, 1000);
+            x = random(width);
+            y = random(height);
+            xseb = 10;
+            yseb = 10;
+        }
+
+        function draw() {
+            background(0);
+            image(dragon, x, y);
+            
+            x = x + xseb;
+            y = y + yseb;
+
+            if (x + dragon.width >= width) {
+                xseb = -xseb;
+                x = width - dragon.width;
+            }
+            else if (x <= 0) {
+                xseb = -xseb;
+                x = 0;
+            }
+
+            if (y + dragon.height >= height) {
+                yseb = -yseb;
+                y = height - dragon.height;
+            }
+            else if (x <= 0) {
+                yseb = -yseb;
+                y = 0;
+            }
+        }
+
+    </script>
 </body>
 </html>
