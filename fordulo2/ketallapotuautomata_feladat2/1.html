@@ -16,11 +16,33 @@
         Háttérkép:
       <input type="button" value="Háttércsere   " onclick="changeBackground();" />
     </form>
+
     <script>
         const canvas=document.getElementById('canvas');
         const context=canvas.getContext('2d');
         
         // Set resolutions
+        var dragon1 = new Image();
+            dragon1.src = './img/dragon1.png',
+            x1 = 0,
+            y1 = 0,
+            w1 = 200,
+            h1 = 150,
+            xWay1 = true,
+            dragon2 = new Image();
+            dragon2.src = './img/dragon2.png',
+            x2 = 0,
+            y2 = 150,
+            w2 = 200,
+            h2 = 150,
+            xWay2 = true,
+            dragon3 = new Image();
+            dragon3.src = './img/dragon3.png',
+            x3 = 0,
+            y3 = 300,
+            w3 = 200,
+            h3 = 150,
+            xWay3 = true;
         const dragonW = 200;
         const dragonH = 150;
         const backgroundW = 1280;
@@ -28,24 +50,10 @@
 
         var selectedBackground = 1;
 
-        let dragon1 = new Image();
-        let dragon2 = new Image();
-        let dragon3 = new Image();
-
         //Init dragons
-        dragon1.src = './img/dragon1.png';
-        dragon1.onload = function() {
-            context.drawImage(dragon1, dragonW, dragonH);
-        };
-        dragon2.src = './img/dragon2.png';
-        dragon2.onload = function() {
-            context.drawImage(dragon2, dragonW+100, dragonH-50);
-        };
-        dragon3.src = './img/dragon3.png';
-        dragon3.onload = function() {
-            context.drawImage(dragon3, dragonW-130, dragonH+30);
-        };
-
+        setInterval(() => {
+            move();
+        }, 50);
         
         document.getElementById("canvas").style.backgroundImage='url(./img/eg1.jpg)';
 
@@ -56,7 +64,68 @@
 
             selectedBackground = selectedBackground === 4 ? selectedBackground = 0 : selectedBackground; 
         }
+        function move(){
+            if (xWay1){
+                context.clearRect(x1,y1,w1,h1);
+                context.clearRect(x2,y2,w2,h2);
+                context.clearRect(x3,y3,w3,h3);
+                x1+=20;
+                x2+=20;
+                x3+=20;
 
+                context.drawImage(dragon1,x1,y1,w1,h1);
+                context.drawImage(dragon2,x2,y2,w2,h2);
+                context.drawImage(dragon3,x3,y3,w3,h3);
+
+                //console.log(x1);
+
+                if (x1 >= context.canvas.width-w1){
+                    context.clearRect(x1,y1,w1,h1);
+                    context.clearRect(x2,y2,w2,h2);
+                    context.clearRect(x3,y3,w3,h3);
+                    context.translate(x1+w1,y1);
+                    x1=0;
+                    x2=0;
+                    x3=0;
+                    context.scale(-1,1);
+                    context.drawImage(dragon1,x1,0,w1,h1);
+                    context.drawImage(dragon2,x2,150,w2,h2);
+                    context.drawImage(dragon3,x3,300,w3,h3);
+                    context.scale(1,1);
+                    //console.log(x1);
+                    xWay1=!xWay1;
+                }
+            }
+            else{
+                context.clearRect(x1,0,w1,h1);
+                context.clearRect(x2,150,w2,h2);
+                context.clearRect(x3,300,w3,h3);
+                x1+=20;
+                x2+=20;
+                x3+=20;
+                context.drawImage(dragon1,x1,y1,w1,h1);
+                context.drawImage(dragon2,x2,y2,w2,h2);
+                context.drawImage(dragon3,x3,y3,w3,h3);
+
+                //console.log(x1);
+                if (x1 >= context.canvas.width-w1){
+                    context.clearRect(x1,y1,w1,h1);
+                    context.clearRect(x2,y2,w2,h2);
+                    context.clearRect(x3,y3,w3,h3);
+                    context.translate(x1+w1,y1);
+                    x1=0;
+                    x2=0;
+                    x3=0;
+                    context.scale(-1,1);
+                    context.drawImage(dragon1,x1,0,w1,h1);
+                    context.drawImage(dragon2,x2,150,w2,h2);
+                    context.drawImage(dragon3,x3,300,w3,h3);
+                    context.scale(1,1);
+                    //console.log(x1);
+                    xWay1=!xWay1;
+                }
+            }
+        }
     </script>
 
     
