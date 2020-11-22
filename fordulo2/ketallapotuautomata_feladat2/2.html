@@ -49,10 +49,33 @@
     </form>
 
     <script>
+        //like a dzsefre :-)
         const canvas = document.getElementById("canvas");
         var ctx = canvas.getContext("2d");
         var canvasWidth = 1200;
         var bet;
+        var img1 = new Image();
+            img1.src = "./img/urhajo1.png";
+            x1 = 0,
+            y1 = 0,
+            w1 = 150,
+            h1 = 150,
+            img2 = new Image();
+            img2.src = "./img/urhajo2.png";
+            x2 = 0,
+            y2 = 200,
+            w2 = 150,
+            h2 = 150,
+            img3 = new Image();
+            img3.src = "./img/urhajo3.png";
+            x3 = 0,
+            y3 = 400,
+            w3 = 150,
+            h3 = 150;
+            
+        var speed1 = RandomSpeed();
+        var speed2 = RandomSpeed();
+        var speed3 = RandomSpeed();
 
         // bg select
         document.getElementById("button").onclick = () => {
@@ -65,53 +88,81 @@
             bet = document.getElementById("bet-select").value;
             switch(bet){
                 case "urhajo1":
-                    betMsg = "harmadik űrhajó";
+                    alert(`Az elsőre fogadtál.`);
                 break;
                 case "urhajo2":
-                    betMsg = "harmadik űrhajó";
+                    alert(`A másodikra fogadtál.`);
                 break;
                 case "urhajo3":
-                    betMsg = "harmadik űrhajó";
+                    alert(`A harmadikra fogadtál.`);
                 break;
             }
-            alert(`A(z) ${betMsg}ra fogadtál.`);
 
             document.getElementById("start-form").style.display = "inline-block";
         }
 
         document.getElementById("start").onclick = () => {
             //távolság generálás
-            canvasWidth = Math.floor(Math.random() * ((window.innerWidth - 100) - 900 + 1) ) + 900;
+            document.getElementById("start-form").style.display = "none";
+            canvasWidth = Math.floor(Math.random() * ((window.innerWidth - 100) - 900 + 1)) + 900;
             document.getElementById("canvas").width = canvasWidth;
 
+            init();
+
+            var interval;
+
             //versenyző generálás
-            var urhajo1 = {
-                velocity:1,
-                model:"./img/urhajo1.jpg",
-                x:0,
-                y:0,
-                bet:0
-                //move:function(){Move()};
+            function init(){
+                draw();
+                interval = setInterval(move,1);
             }
-            var urhajo2 = {
-                velocity:1,
-                model:"./img/urhajo2.jpg",
-                x:0,
-                y:200,
-                bet:0
-                //move:function(){Move()};
+            function draw(){
+                ctx.drawImage(img1,x1,y1,w1,h1);
+                ctx.drawImage(img2,x2,y2,w2,h2);
+                ctx.drawImage(img3,x3,y3,w3,h3);
             }
-            var urhajo3 = {
-                velocity:1,
-                model:"./img/urhajo3.jpg",
-                x:0,
-                y:400,
-                bet:0
-                //move:function(){Move()};
+            function move(){
+                ctx.clearRect(x1,y1,w1,h1);
+                ctx.clearRect(x2,y2,w2,h2);
+                ctx.clearRect(x3,y3,w3,h3);
+                x1+=speed1;
+                x2+=speed2;
+                x3+=speed3;
+                draw();
+                win();
+            }
+            function win(){
+                if (x1 >= canvasWidth - 150){
+                    clearInterval(interval);
+                    if (bet == "urhajo1"){
+                        alert(`Az első űrhajó nyert! A fogadásod bejött.`);
+                    }
+                    else{
+                        alert(`Az első űrhajó nyert! A fogadásod nem jött be.`);
+                    }
+                }
+                else if (x2 >= canvasWidth - 150){
+                    clearInterval(interval);
+                    if (bet == "urhajo2"){
+                        alert(`A második űrhajó nyert! A fogadásod bejött.`);
+                    }
+                    else{
+                        alert(`Az második űrhajó nyert! A fogadásod nem jött be.`);
+                    }
+                }
+                else if (x3 >= canvasWidth - 150){
+                    clearInterval(interval);
+                    if (bet == "urhajo3"){
+                        alert(`A harmadik űrhajó nyert! A fogadásod bejött.`);
+                    }
+                    else{
+                        alert(`A harmadik űrhajó nyert! A fogadásod nem jött be.`);
+                    }
+                }
             }
 
             //kirajzolás
-            ctx.drawImage()
+            //ctx.drawImage()
 
             //sebesség generálás
 
@@ -119,6 +170,11 @@
             //célbaérés
 
             //kiértékelés
+        }
+
+        function RandomSpeed(){
+            var randomSpeed = Math.floor(Math.random() * (20) - 5 + 1) + 5;
+            return randomSpeed;
         }
 
 
