@@ -7,7 +7,6 @@
 var ctx, x=0, y=0, width=3, height=100;
 
 function init() {
-
 ctx =document.getElementById("canvas").getContext('2d');
 ctx.translate(600,400);
 ctx.beginPath();
@@ -32,11 +31,8 @@ ctx.clearRect(x+1.2,y-100,-width,height);
 ctx.rotate(6*Math.PI/180);
 draw();
 }
-
-
 </script>
 </head>
-
 <body onLoad="init();">
 <canvas id="canvas" width="1200" height="1200">
 </canvas>

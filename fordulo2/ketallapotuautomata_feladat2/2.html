@@ -28,7 +28,6 @@
                 <option value="galaxis2">Triangulum</option>
                 <option value="galaxis3">Interstellar</option>
             </select>
-            <input type="button" id="button" value="Kiválaszt">
         </div>
     </form>
 
@@ -78,10 +77,12 @@
         var speed3 = RandomSpeed();
 
         // bg select
-        document.getElementById("button").onclick = () => {
+        document.getElementById("bg-select").onchange = () => {
             canvas.style.backgroundImage = `url("./img/${document.getElementById("bg-select").value}.jpg")`;
             document.getElementById("canvas").style.display="block";
         }
+        canvas.style.backgroundImage = `url("./img/${document.getElementById("bg-select").value}.jpg")`;
+        document.getElementById("canvas").style.display="block";
 
         //fogadás
         document.getElementById("bet").onclick = () => {
