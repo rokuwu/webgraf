@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feladat1</title>
 </head>
-<body>
+<body onload="init();">
     <!-- 1. Keressetek 4 darab olyan képet, amelyen az ég látszódik (szép kék, felhőkkel), valamint Daenerys 3 sárkánya. 
         Készítsetek egy olyan "háttérképet", amelyben a sárkány egymástól függetlenül folyamatosan repül, a háttér pedig változtatható egy gombra kattintással. 
         Ha a sárkányok elérik a képernyő szélét, akkor visszafelé repülnek.  
@@ -19,41 +19,9 @@
 
     <script>
         const canvas=document.getElementById('canvas');
-        const context=canvas.getContext('2d');
-        
-        // Set resolutions
-        var dragon1 = new Image();
-            dragon1.src = './img/dragon1.png',
-            x1 = 0,
-            y1 = 0,
-            w1 = 200,
-            h1 = 150,
-            xWay1 = true,
-            dragon2 = new Image();
-            dragon2.src = './img/dragon2.png',
-            x2 = 0,
-            y2 = 150,
-            w2 = 200,
-            h2 = 150,
-            xWay2 = true,
-            dragon3 = new Image();
-            dragon3.src = './img/dragon3.png',
-            x3 = 0,
-            y3 = 300,
-            w3 = 200,
-            h3 = 150,
-            xWay3 = true;
-        const dragonW = 200;
-        const dragonH = 150;
-        const backgroundW = 1280;
-        const backgroundH = 720;
+        const ctx=canvas.getContext('2d');
 
         var selectedBackground = 1;
-
-        //Init dragons
-        setInterval(() => {
-            move();
-        }, 50);
         
         document.getElementById("canvas").style.backgroundImage='url(./img/eg1.jpg)';
 
@@ -64,67 +32,81 @@
 
             selectedBackground = selectedBackground === 4 ? selectedBackground = 0 : selectedBackground; 
         }
+       
+        const w = 200, h = 150, step=20;
+        var dragon = new Image();
+            dragon.src = './img/dragon1.png',
+            x = 1,
+            y = 1,
+            xWay = true,
+            yWay = true;
+        var dragon2 = new Image();
+            dragon2.src = './img/dragon2.png',
+            x2 = 200,
+            y2 = 300,
+            xWay2 = true,
+            yWay2 = true;
+        var dragon3 = new Image();
+            dragon3.src = './img/dragon3.png',
+            x3 = 500,
+            y3 = 10,
+            xWay3 = true,
+            yWay3 = true;
+
+        function init(){
+            //Draw the 3 dragons
+            draw(dragon,x,y);
+            draw(dragon2,x2,y2);
+            draw(dragon3,x3,y3)
+            setInterval(move,40);
+            setInterval(move2,40);
+            setInterval(move3,40);
+        }
+        function draw(model, modX, modY){
+            ctx.drawImage(model,modX,modY,w,h);
+        }
+        // Red
         function move(){
-            if (xWay1){
-                context.clearRect(x1,y1,w1,h1);
-                context.clearRect(x2,y2,w2,h2);
-                context.clearRect(x3,y3,w3,h3);
-                x1+=20;
-                x2+=20;
-                x3+=20;
+            if (x+w>ctx.canvas.width) {xWay = !xWay; dragon.src = './img/dragon1mirr.png';}
+            else if (x<1) {xWay=!xWay; dragon.src = './img/dragon1.png';}
+            if (y+h>ctx.canvas.height) {yWay = !yWay;}
+            else if (y<1) {yWay=!yWay;}
 
-                context.drawImage(dragon1,x1,y1,w1,h1);
-                context.drawImage(dragon2,x2,y2,w2,h2);
-                context.drawImage(dragon3,x3,y3,w3,h3);
+            ctx.clearRect(x,y,w,h);
 
-                //console.log(x1);
+            x=xWay?x+step:x-step;
+            y=yWay?y+step:y-step;
 
-                if (x1 >= context.canvas.width-w1){
-                    context.clearRect(x1,y1,w1,h1);
-                    context.clearRect(x2,y2,w2,h2);
-                    context.clearRect(x3,y3,w3,h3);
-                    context.translate(x1+w1,y1);
-                    x1=0;
-                    x2=0;
-                    x3=0;
-                    context.scale(-1,1);
-                    context.drawImage(dragon1,x1,0,w1,h1);
-                    context.drawImage(dragon2,x2,150,w2,h2);
-                    context.drawImage(dragon3,x3,300,w3,h3);
-                    context.scale(1,1);
-                    //console.log(x1);
-                    xWay1=!xWay1;
-                }
-            }
-            else{
-                context.clearRect(x1,0,w1,h1);
-                context.clearRect(x2,150,w2,h2);
-                context.clearRect(x3,300,w3,h3);
-                x1+=20;
-                x2+=20;
-                x3+=20;
-                context.drawImage(dragon1,x1,y1,w1,h1);
-                context.drawImage(dragon2,x2,y2,w2,h2);
-                context.drawImage(dragon3,x3,y3,w3,h3);
+            //Draw the 3 dragons
+            draw(dragon,x,y);
+        }
 
-                //console.log(x1);
-                if (x1 >= context.canvas.width-w1){
-                    context.clearRect(x1,y1,w1,h1);
-                    context.clearRect(x2,y2,w2,h2);
-                    context.clearRect(x3,y3,w3,h3);
-                    context.translate(x1+w1,y1);
-                    x1=0;
-                    x2=0;
-                    x3=0;
-                    context.scale(-1,1);
-                    context.drawImage(dragon1,x1,0,w1,h1);
-                    context.drawImage(dragon2,x2,150,w2,h2);
-                    context.drawImage(dragon3,x3,300,w3,h3);
-                    context.scale(1,1);
-                    //console.log(x1);
-                    xWay1=!xWay1;
-                }
-            }
+        // Green
+        function move2(){
+            if (x2+w>ctx.canvas.width) {xWay2 = !xWay2; dragon2.src = './img/dragon2mirr.png'}
+            else if (x2<1) {xWay2=!xWay2; dragon2.src = './img/dragon2.png'}
+            if (y2+h>ctx.canvas.height) {yWay2 = !yWay2;}
+            else if (y2<1) {yWay2=!yWay2;}
+
+            ctx.clearRect(x2,y2,w,h);
+
+            x2=xWay2?x2+step:x2-step;
+            y2=yWay2?y2+step:y2-step;
+            draw(dragon2,x2,y2);
+        }
+
+        // Blue
+        function move3(){
+            if (x3+w>ctx.canvas.width) {xWay3 = !xWay3; dragon3.src = './img/dragon3mirr.png'}
+            else if (x3<1) {xWay3=!xWay3; dragon3.src = './img/dragon3.png'}
+            if (y3+h>ctx.canvas.height) {yWay3 = !yWay3;}
+            else if (y3<1) {yWay3=!yWay3;}
+
+            ctx.clearRect(x3,y3,w,h);
+
+            x3=xWay3?x3+step:x3-step;
+            y3=yWay3?y3+step:y3-step;
+            draw(dragon3,x3,y3);
         }
     </script>
 
