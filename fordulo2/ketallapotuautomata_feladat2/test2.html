@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas width="1000" height="500" id="canvas" style="border: 1px solid;"></canvas>
+    <input type="button" id="click" value="asd">
+
+    <script>
+        const canvas=document.getElementById('canvas');
+        const ctx=canvas.getContext('2d');
+        const button=document.getElementById('click');
+        const w = 200, h = 150, step=20;
+        var dragon = new Image();
+            dragon.src = './img/dragon1.png',
+            x = 1,
+            y = 1,
+            xWay = true,
+            yWay = true,
+            dragon2 = new Image();
+            dragon2.src = './img/dragon1.png',
+            x2 = 1,
+            y2 = 1,
+            xWay2 = true,
+            yWay2 = true,
+            dragon3 = new Image();
+            dragon3.src = './img/dragon1.png',
+            x3 = 1,
+            y3 = 1,
+            xWay3 = true,
+            yWay3 = true,
+
+        init();
+
+        button.onclick = () => {
+            move();            
+        }
+        function init(){
+            draw();
+            var interval=setInterval(move,40);
+        }
+        function draw(){
+            ctx.clearRect(x,y,w,h);
+            ctx.drawImage(dragon,x,y,w,h);
+            ctx.clearRect(x2,y2,w,h);
+            ctx.drawImage(dragon2,x2,y2,w,h);
+            ctx.clearRect(x2,y2,w,h);
+            ctx.drawImage(dragon3,x3,y3,w,h);
+        }
+        function move(){
+            if (x+w>ctx.canvas.width) {xWay = !xWay; console.log("csere1"); dragon.src = './img/dragon1mirr.png';}
+            else if (x<1) {xWay=!xWay; console.log("csere2"); dragon.src = './img/dragon1.png';}
+            if (y+h>ctx.canvas.height) {yWay = !yWay;}
+            else if (y<1) {yWay=!yWay;}
+            if(xWay!=xWayP){
+                
+            }
+            ctx.clearRect(x,y,w,h);
+            x=xWay?x+step:x-step;
+            y=yWay?y+step:y-step;
+            draw();
+        }
+    </script>
+</body>
+</html>
