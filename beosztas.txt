@@ -1,0 +1,11 @@
+1. feladatsor
+	Zoli: CSS
+	Ákos: JS
+	Sebi: HTML
+2. feladatsor:
+	Zoli: 1
+	Ákos: 2
+	Sebi: 3, 4
+3. feladatsor:
+	Szilveszter: 1
+	
