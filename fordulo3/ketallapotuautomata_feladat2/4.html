@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            text-align: center;
+            margin: auto;
+        }
+        tr, td{
+            border: 1px solid;
+            width: 20px;
+            height: 20px;
+            background-color:grey;
+        }
+        .blank{
+            visibility: hidden;
+        }
+        img{
+            max-width: 32px;
+        }
+    </style>
+</head>
+<body onload="genTable();">
+    <table>
+        <tr id="frogtable"></tr>
+    </table>
+    <select name="frogs" id="frogs">
+        <option default value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+
+    <script>
+        let x1 = 1; let x2;
+        
+        // Generate the table
+        function genTable(){
+            const table = document.getElementById("frogtable");
+            const tableLenght = Math.floor(Math.random() * (30 - 10 + 1) + 10);
+            x2 = tableLenght;
+            console.log("Generated: " + tableLenght);
+            /* First and Last should be frog1 and frog2 */
+            var i = 1;
+            while(i <= tableLenght){
+                var td = document.createElement("td");
+                if(i == 1){
+                    // Frog1
+                    td.innerHTML=froghtml1;
+                }
+                if(i != 1 && i != tableLenght){
+                    // Rocks
+                    td.innerHTML=nonehtml;
+                }
+                if(i == tableLenght){
+                    // Frog2
+                    td.innerHTML=froghtml2;
+                }
+                table.appendChild(td);
+                i++;
+            };
+        };
+
+        // Code for the movement of the frog
+        var frogspeed = 1;
+
+        document.getElementById("frogs").onchange = () => {
+            frogspeed = document.getElementById("frogs").value;
+        }
+
+        const froghtml1 = `<img src="img/frog1.png" onclick="moveFrog(-(-frogspeed))">`;
+        const froghtml2 = `<img src="img/frog2.png" onclick="moveFrog2(-frogspeed)">`;
+        const nonehtml = `<img src="img/ko.png">`;
+
+        function getCell(x) {
+            return document.querySelector(`table td:nth-child(${x})`);
+        }
+
+        function moveFrog(dx) {
+            var jumpTo = Math.max(Math.min(x1 + dx, 30), 1);
+            if(getCell(jumpTo).innerHTML == froghtml2 || jumpTo >= x2){
+                alert("Bal nyert");
+            }
+            else if(getCell(jumpTo).innerHTML == nonehtml){
+                getCell(x1).innerHTML = nonehtml;
+                x1 = jumpTo
+                getCell(x1).innerHTML = froghtml1;
+            }
+        }
+
+        function moveFrog2(dx) {
+            var jumpTo = Math.max(Math.min(x2 + dx, 30), 1);
+            if(getCell(jumpTo).innerHTML == froghtml1 || jumpTo <= x1){
+                alert("Jobb nyert");
+            }
+            else if(getCell(jumpTo).innerHTML == nonehtml){
+                getCell(x2).innerHTML = nonehtml;
+                x2 = jumpTo
+                getCell(x2).innerHTML = froghtml2;
+            }
+        }
+    </script>
+</body>
+</html>

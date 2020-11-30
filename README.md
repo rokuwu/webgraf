@@ -12,6 +12,7 @@ Ez a repo a Webgraf verseny-hez van használva, ahova a megoldott (vagy akár f�
   * 1 - Not yet started
   * 2 - Not yet started
   * 3 - Not yet started
+  * 4 - Done
 3. Feladatsor
   * 1 - Not yet started
 
