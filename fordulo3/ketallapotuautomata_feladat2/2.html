@@ -95,15 +95,18 @@
             }
         }
 
-        document.getElementById("popup").onclick = function(){
-            if (document.getElementById("popup").src == document.getElementById("small-dragon").src){
-                score++;
-                console.log(score);
-            }
-            else{
-                negScore++;
-                console.log(negScore);
-            }
+        if (document.getElementById("popup") != undefined){
+            document.getElementById("popup").addEventListener("click", function(){
+
+                if (document.getElementById("popup").src == document.getElementById("small-dragon").src){
+                    score++;
+                    console.log(score);
+                }
+                else{
+                    negScore++;
+                    console.log(negScore);
+                }
+            }) 
         }
 
         document.getElementById("body").style.width = window.innerWidth;
