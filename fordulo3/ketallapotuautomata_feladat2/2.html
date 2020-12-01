@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feladat 2</title>
+    <link rel="stylesheet" href="./css/feladat2.css">
+</head>
+<body>
+    <div id="body">
+        <form id="number-select-form">
+            <label for="number">Hány darab képet szeretnél?</label>
+            <input type="number" name="number" id="number">
+            <input onclick="StartGame()" type="button" value="Start" id="start">
+        </form>
+        <p id="score"></p>
+        <p id="negative-score"></p>
+    </div>
+    <!--
+        2. Készítsetek egyszerű reflexteszt játékot JavaScript kódban! Az oldalon a jobb felső sarokban jelenjen meg Daenerys valamelyik sárkánya (Drogon, Rhageal, Viserion). (Minden indításkor más-más, legalább 3 különböző sárkányotok legyen!)
+
+        A játék során a képernyő közepén megjelenik egy sárkány, amelyik vagy a jobb felső sarokban lévő, csak nagyobb méretű, vagy pedig egy teljesen más. (Lehet nem sárkány is.) Az előbbis esetben a felhasználónak kattintania kell a megjelenő sárkányra, egyébként viszont nem. A sikeres és a sikertelen kattintások is jelenjenek meg a képernyőn! A sárkány (vagy nem sárkány) mindig a képernyő közepén jelenjen meg! Ha 2 másodperc után nincs kattintás, akkor adja a program a következő képet! A program alapértelmezésben 10 képet jelenítsen meg, de ezt a felhasználónak legyen lehetősége növelni!
+    -->
+
+
+
+    <script>
+        var rounds = document.getElementById("number").value;        
+        var selectedDragon;
+        var randomItem;
+        var score, negScore;
+
+        //DragonSelect();
+
+        function StartGame(){
+            var score = 0;
+            var negScore = 0;
+            var currentRound=1;            
+            DisplaySelected();
+
+            var interval = setInterval(function(){
+                document.getElementById("score").innerHTML = `Jó kattintások: ${score++}, hibás kattintások: ${negScore}`;
+                
+                DisplayPopup();
+                
+                if(currentRound < rounds){
+                    currentRound++;
+                }
+                else{
+                    clearInterval(interval);
+                }
+            },2000)
+        }
+
+        function DisplaySelected(){
+            let img = document.createElement("img");
+            img.src = RandomDragon();
+            img.id = "small-dragon"
+
+            if (document.getElementById("small-dragon") != undefined){
+                document.getElementById("small-dragon").src = img.src = RandomDragon();
+            }
+            else{
+                document.getElementById("body").appendChild(img);
+
+            }
+
+            document.getElementById("body").appendChild(img);
+
+            function RandomDragon(){
+                var selected = `./img/random_items/${Math.floor(Math.random()*(11 - 9 + 1) + 9)}.jpg`;
+                selectedDragon = selected;
+
+                return selected;
+            }
+        }
+
+        function DisplayPopup(){
+            let img = document.createElement("img");
+            img.src = RandomPopup();
+            img.id = "popup"
+
+            if (document.getElementById("popup") != undefined){
+                document.getElementById("popup").src = img.src = RandomPopup();
+            }
+            else{
+                document.getElementById("body").appendChild(img);
+
+            }
+
+            function RandomPopup(){
+                var randomItem = `./img/random_items/${Math.floor((Math.random()*11)+1)}.jpg`;
+                randomImg = randomItem;
+                return randomItem;
+            }
+        }
+
+        document.getElementById("popup").onclick = function(){
+            if (document.getElementById("popup").src == document.getElementById("small-dragon").src){
+                score++;
+                console.log(score);
+            }
+            else{
+                negScore++;
+                console.log(negScore);
+            }
+        }
+
+        document.getElementById("body").style.width = window.innerWidth;
+        document.getElementById("body").style.height = window.innerHeight-4;
+    </script>
+</body>
+</html>
