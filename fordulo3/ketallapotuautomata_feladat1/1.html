@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registeration</title>
+</head>
+<link rel="stylesheet" href="css/style.css">
+<body>
+    <h1>Üdvözöllek! Kérlek regisztrálj!</h1>
+    <form>
+        <input type="text" name="username" id="username" placeholder="Felhasználó">
+        <label for="username" id="username-label">Csak kis angol betűket és számokat tartalmazhat.</label>
+        <input type="text" name="fullname" id="fullname" placeholder="Teljes név">
+        <label for="fullname" id="fullname-label">A teljes név minimum két szóközzel elválasztott tagból álljon!</label>
+        <input type="password" name="pass1" id="pass1" placeholder="Jelszó">
+        <label for="pass1" id="pass1-label">Tartalmazhat betűket és számokat, minimum 7 karakter hosszú legyen!</label>
+        <input type="password" name="pass2" id="pass2" placeholder="Jelszó megint">
+        <label for="pass2" id="pass2-label">A két jelszónak meg kell egyeznie.</label>
+        <input type="button" value="Regisztrálás!" id="register">        
+    </form>
+    <p id="error"></p>
+
+    <script>
+        var error;
+        var errorMsg = document.getElementById("error");
+        var username = document.getElementById("username");
+        var fullname = document.getElementById("fullname");
+        var pass1 = document.getElementById("pass1");
+        var pass2 = document.getElementById("pass2");
+
+        
+        username.addEventListener("mouseover",function(){
+            document.getElementById("username-label").style.display = "block";
+        })
+        username.addEventListener("mouseleave",function(){
+            document.getElementById("username-label").style.display = "none";
+        })        
+        fullname.addEventListener("mouseover",function(){
+            document.getElementById("fullname-label").style.display = "block";
+        })
+        fullname.addEventListener("mouseleave",function(){
+            document.getElementById("fullname-label").style.display = "none";
+        })
+        pass1.addEventListener("mouseover",function(){
+            document.getElementById("pass1-label").style.display = "block";
+        })
+        pass1.addEventListener("mouseleave",function(){
+            document.getElementById("pass1-label").style.display = "none";
+        })
+        pass2.addEventListener("mouseover",function(){
+            document.getElementById("pass2-label").style.display = "block";
+        })
+        pass2.addEventListener("mouseleave",function(){
+            document.getElementById("pass2-label").style.display = "none";
+        })
+
+        document.getElementById("register").addEventListener("click", function(){
+            //  semmi sem üres
+            //  teljes névben van szóköz
+            //a login csak kisbetű és szám
+            //két jelszó min 7 hosszú
+            //a két jelszó egyezik
+            error = undefined;
+            errorMsg.style.color = "red";
+
+            //semmi sem üres
+            if(username.value.trim() != "" && fullname.value.trim() != "" && pass1.value.trim() != ""){
+                //teljes névben van szóköz
+                var filter = new RegExp("\\s");
+                if(!filter.test(fullname.value)){
+                    error = "fullname"
+                }
+
+                //login csak kisbetű és szám
+                var filter = new RegExp("[^a-z0-9]+");
+                if(filter.test(username.value)){
+                    error = "username";
+                }
+
+                //két jelszó megegyezik és 7 karakter hosszú
+                if(pass1.value.length < 7 || pass1.value != pass2.value){
+                    error = "pass";
+                }
+            }
+            else{
+                error = "blank"
+            }
+
+            if (error){
+                switch(error){
+                    case "blank":
+                        errorMsg.innerHTML = "Minden mezőt ki kell tölteni!";
+                    break;
+                    case "fullname":
+                        errorMsg.innerHTML = "A teljes névnek minimum két tagúnak kell lennie!";
+                    break;
+                    case "username":
+                        errorMsg.innerHTML = "A felhasználónév csak kis angol betűket és számokat tartalmazhat!";
+                    break;
+                    case "pass":
+                        errorMsg.innerHTML = "A jelszavaknak minimum 7 karakter hosszúnak kell lenniük és meg kell egyezniük!";
+                    break;
+                }
+            }
+            else{
+                errorMsg.style.color = "green";
+                errorMsg.innerHTML = "Sikeres regisztráció!";
+                username.value = "";
+                fullname.value = "";
+                pass1.value = "";
+                pass2.value = "";
+            }
+        })
+
+    </script>
+</body>
+</html>

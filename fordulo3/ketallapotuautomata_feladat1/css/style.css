@@ -7,3 +7,6 @@ input{
 label{
     display: none;
 }
+#error{
+    color: red;
+}
