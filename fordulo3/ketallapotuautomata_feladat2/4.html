@@ -38,10 +38,13 @@
         <option default value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
+        <option value="-3">-3</option>
+        <option value="-2">-2</option>
+        <option value="-1">-1</option>
     </select>
 
     <script>
-        let x1 = 1; let x2;
+        let x1 = 1; let x2; var run = true;
         
         // Generate the table
         function genTable(){
@@ -86,26 +89,38 @@
         }
 
         function moveFrog(dx) {
-            var jumpTo = Math.max(Math.min(x1 + dx, 30), 1);
-            if(getCell(jumpTo).innerHTML == froghtml2 || jumpTo >= x2){
-                alert("Bal nyert");
-            }
-            else if(getCell(jumpTo).innerHTML == nonehtml){
-                getCell(x1).innerHTML = nonehtml;
-                x1 = jumpTo
-                getCell(x1).innerHTML = froghtml1;
+            if(run){
+                var jumpTo = Math.max(Math.min(x1 + dx, 30), 1);
+                if(getCell(jumpTo).innerHTML == froghtml2 || jumpTo >= x2){
+                    alert("Bal nyert");
+                    run = false;
+                    getCell(x1).innerHTML = nonehtml;
+                    x1 = jumpTo
+                    getCell(x1).innerHTML = froghtml1;
+                }
+                else if(getCell(jumpTo).innerHTML == nonehtml){
+                    getCell(x1).innerHTML = nonehtml;
+                    x1 = jumpTo
+                    getCell(x1).innerHTML = froghtml1;
+                }
             }
         }
 
         function moveFrog2(dx) {
-            var jumpTo = Math.max(Math.min(x2 + dx, 30), 1);
-            if(getCell(jumpTo).innerHTML == froghtml1 || jumpTo <= x1){
-                alert("Jobb nyert");
-            }
-            else if(getCell(jumpTo).innerHTML == nonehtml){
-                getCell(x2).innerHTML = nonehtml;
-                x2 = jumpTo
-                getCell(x2).innerHTML = froghtml2;
+            if(run){
+                var jumpTo = Math.max(Math.min(x2 + dx, 30), 1);
+                if(getCell(jumpTo).innerHTML == froghtml1 || jumpTo <= x1){
+                    alert("Jobb nyert");
+                    run = false;
+                    getCell(x2).innerHTML = nonehtml;
+                    x2 = jumpTo
+                    getCell(x2).innerHTML = froghtml2;
+                }
+                else if(getCell(jumpTo).innerHTML == nonehtml){
+                    getCell(x2).innerHTML = nonehtml;
+                    x2 = jumpTo
+                    getCell(x2).innerHTML = froghtml2;
+                }
             }
         }
     </script>
