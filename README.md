@@ -7,10 +7,11 @@ Ez a repo a Webgraf verseny-hez van használva, ahova a megoldott (vagy akár f�
 3. Forduló
 
 1. Feladatsor
-  * 1-2 - Not yet started
+  * 1 - Finished
+  * 2 - Started
 2. Feladatsor
   * 1 - Not yet started
-  * 2 - Not yet started
+  * 2 - Broken
   * 3 - Done
   * 4 - Done
 3. Feladatsor
