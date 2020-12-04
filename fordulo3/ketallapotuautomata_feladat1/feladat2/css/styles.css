@@ -1,0 +1,28 @@
+body{
+    font-family: Arial, Helvetica, sans-serif !important;
+}
+.content{
+    width: 700px !important;
+    margin: 0 15px !important;
+    float: left;
+}
+.daenerys-img{
+    width: 100%;
+}
+.dragons-img{
+    width: 100%;
+}
+.col{
+    padding: 0 !important;
+}
+.oszlop{
+    padding: 10px !important;
+    text-align: justify;
+}
+h1{
+    font-size: 28pt !important;
+}
+h2{
+    font-size: 20pt !important;
+    color: #000080;
+}

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feladat 2</title>
     <link rel="stylesheet" href="./css/feladat2.css">
+    <script src="./js/random_function.js"></script>
 </head>
 <body>
     <div id="body">
@@ -25,92 +26,40 @@
 
 
     <script>
-        var rounds = document.getElementById("number").value;        
-        var selectedDragon;
-        var randomItem;
-        var score, negScore;
+        //sárkány alapból az oldal sarkában
+        //megadjuk a körök számát (alap=10)
+        //rákattintunk a startra
+        //loop a körök számával: mindig lenullázza és generál egy új random timeoutot,
+        //random timeout -> start function: rajzol 1 képet és számol 2ig, ha elérte a kettőt, akkor kilép -pont
+        //interval elszámol egyesével 2-ig
+        //onlick function: megnézi, hogy a kép.src egyezik-e és pontot ad vagy von le
 
-        //DragonSelect();
+        var startTime=new Date();
+        var stopTime=new Date();
+        var startPressed=false;
+        var changeStarted=false;
+        var timerID;
 
         function StartGame(){
-            var score = 0;
-            var negScore = 0;
-            var currentRound=1;            
-            DisplaySelected();
-
-            var interval = setInterval(function(){
-                document.getElementById("score").innerHTML = `Jó kattintások: ${score++}, hibás kattintások: ${negScore}`;
-                
-                DisplayPopup();
-                
-                if(currentRound < rounds){
-                    currentRound++;
-                }
-                else{
-                    clearInterval(interval);
-                }
-            },2000)
+            startTime=newDate();
+            ChangeStarted=true;
         }
 
-        function DisplaySelected(){
-            let img = document.createElement("img");
-            img.src = RandomDragon();
-            img.id = "small-dragon"
+        function Score(){
+            if(ChangeStarted){
+                stopTime=new Date();
+                var responseTime=Math.floor((stopTime.getTime()-startTime.getTime())/1000);
 
-            if (document.getElementById("small-dragon") != undefined){
-                document.getElementById("small-dragon").src = img.src = RandomDragon();
+                startPressed=false;
+                changeStarted=false;
             }
             else{
-                document.getElementById("body").appendChild(img);
 
-            }
-
-            document.getElementById("body").appendChild(img);
-
-            function RandomDragon(){
-                var selected = `./img/random_items/${Math.floor(Math.random()*(11 - 9 + 1) + 9)}.jpg`;
-                selectedDragon = selected;
-
-                return selected;
             }
         }
 
-        function DisplayPopup(){
-            let img = document.createElement("img");
-            img.src = RandomPopup();
-            img.id = "popup"
-
-            if (document.getElementById("popup") != undefined){
-                document.getElementById("popup").src = img.src = RandomPopup();
-            }
-            else{
-                document.getElementById("body").appendChild(img);
-
-            }
-
-            function RandomPopup(){
-                var randomItem = `./img/random_items/${Math.floor((Math.random()*11)+1)}.jpg`;
-                randomImg = randomItem;
-                return randomItem;
-            }
-        }
-
-        if (document.getElementById("popup") != undefined){
-            document.getElementById("popup").addEventListener("click", function(){
-
-                if (document.getElementById("popup").src == document.getElementById("small-dragon").src){
-                    score++;
-                    console.log(score);
-                }
-                else{
-                    negScore++;
-                    console.log(negScore);
-                }
-            }) 
-        }
-
-        document.getElementById("body").style.width = window.innerWidth;
-        document.getElementById("body").style.height = window.innerHeight-4;
+        document.getElementById("body").style.width=window.innerWidth;
+        document.getElementById("body").style.height=window.innerHeight-4;
     </script>
 </body>
 </html>
