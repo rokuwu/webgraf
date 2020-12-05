@@ -26,3 +26,9 @@ h2{
     font-size: 20pt !important;
     color: #000080;
 }
+.small-link{
+    font-size: small;
+}
+table{
+    margin-bottom: 0 !important;
+}
