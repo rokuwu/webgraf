@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feladat 2</title>
+    <link rel="stylesheet" href="./css/feladat2.css">
+</head>
+<body>
+    <div id="body">
+        <form id="number-select-form">
+            <label for="number">Hány darab képet szeretnél?</label>
+            <input type="number" name="number" id="number" value="10" min="10" max="30">
+            <br>
+            <img src="" alt="" id="small-dragon">
+            <input onclick="StartGame()" type="button" value="Start" id="start">
+        </form>
+        <p id="score"> </p>
+        <img src="" alt="" id="popup" onclick="clickDragon()">
+    </div>
+    <!--
+        2. Készítsetek egyszerű reflexteszt játékot JavaScript kódban! Az oldalon a jobb felső sarokban jelenjen meg Daenerys valamelyik sárkánya (Drogon, Rhageal, Viserion). (Minden indításkor más-más, legalább 3 különböző sárkányotok legyen!)
+        A játék során a képernyő közepén megjelenik egy sárkány, amelyik vagy a jobb felső sarokban lévő, csak nagyobb méretű, vagy pedig egy teljesen más. (Lehet nem sárkány is.) Az előbbis esetben a felhasználónak kattintania kell a megjelenő sárkányra, egyébként viszont nem. A sikeres és a sikertelen kattintások is jelenjenek meg a képernyőn! A sárkány (vagy nem sárkány) mindig a képernyő közepén jelenjen meg! Ha 2 másodperc után nincs kattintás, akkor adja a program a következő képet! A program alapértelmezésben 10 képet jelenítsen meg, de ezt a felhasználónak legyen lehetősége növelni!
+    -->
+
+
+
+    <script>
+        var rounds;        
+        var gameOn;
+        var interval;
+        var score, negScore;
+        var currentRound;
+        var popupNo, smallDragNo;
+
+        //DragonSelect();
+
+    function StartGame(){
+        if (!gameOn){
+            gameOn = true;  
+            rounds = document.getElementById("number").value;
+            score = 0;
+            negScore = 0;
+            currentRound=0;   
+            popupNo=-1;
+                  
+            DisplaySelected();
+            document.getElementById("score").innerHTML = `Jó kattintások: ${score}, hibás kattintások: ${negScore}`;
+
+            interval = setInterval(function(){
+                DisplayPopup();
+                if(currentRound < rounds){
+                    currentRound++;
+                }
+                else{
+                    currentRound = 0;
+                    document.getElementById("popup").style.display = "none";
+                    document.getElementById("small-dragon").style.display = "none";
+                    gameOn = false;
+                    clearInterval(interval);
+                }
+            },2000)
+        }
+    }
+
+        function DisplaySelected(){
+            smallDragNo = Math.floor(Math.random()*(11 - 9 + 1) + 9);
+            let selectedDragon = `./img/random_items/${smallDragNo}.jpg`;
+            document.getElementById("small-dragon").style.display = "block";
+            document.getElementById("small-dragon").src = selectedDragon;
+        }
+
+        function DisplayPopup(){
+            let beforePopup =popupNo;
+            popupNo = Math.floor((Math.random()*11)+1);
+            if (popupNo == beforePopup) popupNo++;  // ne legyen két egyforma egymás után
+            if (popupNo == 12) popupNo=1;
+            let randomItem = `./img/random_items/${popupNo}.jpg`;
+            document.getElementById("popup").style.display = "block";
+            document.getElementById("popup").src =  randomItem;
+        }
+            
+        function clickDragon(){
+            if (popupNo == smallDragNo){
+                score++;
+            }
+            else{
+                negScore++;
+            }
+            clearInterval(interval);
+            document.getElementById("score").innerHTML = `Jó kattintások: ${score}, hibás kattintások: ${negScore}`;
+            DisplayPopup();
+            if(currentRound < rounds){
+                currentRound++;
+                interval = setInterval(function(){
+                DisplayPopup();
+                if(currentRound < rounds){
+                    currentRound++;
+                }
+                else{
+                    currentRound = 0;
+                    document.getElementById("popup").style.display = "none";
+                    document.getElementById("small-dragon").style.display = "none";
+                    gameOn = false;
+                    clearInterval(interval);
+                }
+            },2000)
+            }
+            else{
+                currentRound = 0;
+                document.getElementById("popup").style.display = "none";
+                document.getElementById("small-dragon").style.display = "none";
+                gameOn = false;
+                clearInterval(interval);
+            }
+            
+        }
+
+        
+    </script>
+</body>
+</html>
