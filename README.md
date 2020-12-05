@@ -17,6 +17,7 @@ Ez a repo a Webgraf verseny-hez van használva, ahova a megoldott (vagy akár f�
 3. Feladatsor
   * 1 - Not yet started
 
+asd
 ## Feladat leírások:
   * Feladatsor 1
   ```
