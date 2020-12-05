@@ -5,61 +5,137 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feladat 2</title>
     <link rel="stylesheet" href="./css/feladat2.css">
-    <script src="./js/random_function.js"></script>
 </head>
 <body>
     <div id="body">
         <form id="number-select-form">
             <label for="number">Hány darab képet szeretnél?</label>
-            <input type="number" name="number" id="number">
+            <input type="number" name="number" id="number" value="10" min="10" max="30">
+            <br>
+            <img src="" alt="" id="small-dragon">
             <input onclick="StartGame()" type="button" value="Start" id="start">
         </form>
-        <p id="score"></p>
-        <p id="negative-score"></p>
+        <p id="score"> </p>
+        <img src="" alt="" id="popup" onclick="clickDragon()">
     </div>
     <!--
         2. Készítsetek egyszerű reflexteszt játékot JavaScript kódban! Az oldalon a jobb felső sarokban jelenjen meg Daenerys valamelyik sárkánya (Drogon, Rhageal, Viserion). (Minden indításkor más-más, legalább 3 különböző sárkányotok legyen!)
-
         A játék során a képernyő közepén megjelenik egy sárkány, amelyik vagy a jobb felső sarokban lévő, csak nagyobb méretű, vagy pedig egy teljesen más. (Lehet nem sárkány is.) Az előbbis esetben a felhasználónak kattintania kell a megjelenő sárkányra, egyébként viszont nem. A sikeres és a sikertelen kattintások is jelenjenek meg a képernyőn! A sárkány (vagy nem sárkány) mindig a képernyő közepén jelenjen meg! Ha 2 másodperc után nincs kattintás, akkor adja a program a következő képet! A program alapértelmezésben 10 képet jelenítsen meg, de ezt a felhasználónak legyen lehetősége növelni!
     -->
 
 
 
-    <script>
-        //sárkány alapból az oldal sarkában
-        //megadjuk a körök számát (alap=10)
-        //rákattintunk a startra
-        //loop a körök számával: mindig lenullázza és generál egy új random timeoutot,
-        //random timeout -> start function: rajzol 1 képet és számol 2ig, ha elérte a kettőt, akkor kilép -pont
-        //interval elszámol egyesével 2-ig
-        //onlick function: megnézi, hogy a kép.src egyezik-e és pontot ad vagy von le
+<script>
+    var rounds;        
+    var gameOn;
+    var interval;
+    var score, negScore;
+    var currentRound;
+    var popupNo, smallDragNo;
+    var alreadyChosen;
 
-        var startTime=new Date();
-        var stopTime=new Date();
-        var startPressed=false;
-        var changeStarted=false;
-        var timerID;
+    function StartGame(){
+        if (!gameOn){
+            gameOn = true;  
+            rounds = document.getElementById("number").value;
+            score = 0;
+            negScore = 0;
+            currentRound=0;   
+            popupNo=-1;
+                  
+            DisplaySelected();
+            document.getElementById("score").innerHTML = `Jó kattintások: ${score}, hibás kattintások: ${negScore}`;
 
-        function StartGame(){
-            startTime=newDate();
-            ChangeStarted=true;
+            clearPopupInterval = setInterval(()=>{},4206969); //funny number
+            interval = setInterval(function(){
+                DisplayPopup();
+                if(currentRound < rounds){
+                    currentRound++;
+                }
+                else{
+                    currentRound = 0;
+                    document.getElementById("popup").style.display = "none";
+                    document.getElementById("small-dragon").style.display = "none";
+                    gameOn = false;
+                    clearInterval(interval);
+                }
+            },randomInt(3000,6000))
         }
+    }
 
-        function Score(){
-            if(ChangeStarted){
-                stopTime=new Date();
-                var responseTime=Math.floor((stopTime.getTime()-startTime.getTime())/1000);
+    function DisplaySelected(){
+        smallDragNo = Math.floor(Math.random()*(11 - 9 + 1) + 9);
+        let selectedDragon = `./img/random_items/${smallDragNo}.jpg`;
+        document.getElementById("small-dragon").style.display = "block";
+        document.getElementById("small-dragon").src = selectedDragon;
+    }
 
-                startPressed=false;
-                changeStarted=false;
-            }
+    function DisplayPopup(){
+        clearInterval(clearPopupInterval);
+        let beforePopup = popupNo;
+        popupNo = Math.floor((Math.random()*11)+1);
+        if (popupNo == beforePopup) popupNo++;  // ne legyen két egyforma egymás után
+        if (popupNo == 12) popupNo=1;
+        let randomItem = `./img/random_items/${popupNo}.jpg`;
+        document.getElementById("popup").style.display = "block";
+        document.getElementById("popup").src =  randomItem;
+        alreadyChosen = false;
+        clearPopupInterval = setInterval(()=>clearPopup(),2000);
+    }
+
+    function clickDragon(){
+        clearInterval(interval);
+        
+        document.getElementById("popup").src = "";
+        if(!alreadyChosen){
+            alreadyChosen = true;
+            if (popupNo == smallDragNo){
+                score++;
+                DisplaySelected();
+                }
             else{
-
-            }
+                negScore++;
+            }            
+            document.getElementById("score").innerHTML = `Jó kattintások: ${score}, hibás kattintások: ${negScore}`;
+            setTimeout(()=>{
+                DisplayPopup();
+                if(currentRound < rounds){
+                    currentRound++;
+                    interval = setInterval(function(){
+                        DisplayPopup();
+                        if(currentRound < rounds){
+                            currentRound++;
+                        }
+                        else{
+                            currentRound = 0;
+                            document.getElementById("popup").style.display = "none";
+                            document.getElementById("small-dragon").style.display = "none";
+                            gameOn = false;
+                            clearInterval(interval);
+                        }
+                    },randomInt(3000,6000));
+                    
+                }
+                else{
+                    currentRound = 0;
+                    document.getElementById("popup").style.display = "none";
+                    document.getElementById("small-dragon").style.display = "none";
+                    gameOn = false;
+                    clearInterval(interval);
+                }
+            },randomInt(1000,5000))
         }
+    }
 
-        document.getElementById("body").style.width=window.innerWidth;
-        document.getElementById("body").style.height=window.innerHeight-4;
-    </script>
+    function clearPopup(){
+        document.getElementById("popup").src = "";
+    }
+
+    // Helpers
+    function randomInt(min, max) {
+        if(min > max){var tmp = max; min = max; max = tmp;} // Just in case we're dumb
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+</script>
 </body>
 </html>
