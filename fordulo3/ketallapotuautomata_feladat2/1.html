@@ -12,10 +12,29 @@
                 <img src="img/daenerys.png" id="dae">
             </div>
         </div>
+        <h1 id="text"></h1>
         <script>
-            var x;
-            var y;
-            
+            var x = y = 0;
+            var secondRun = true;
+            circle = document.getElementById("circle");
+            setInterval(()=>{
+                switch(secondRun){
+                    case true:
+                        secondRun = false;
+                        x+=2;
+                        y+=2;
+                        break;
+                    case false:
+                        secondRun = true;
+                        x+=2.31;
+                        break;
+                }
+                if(x >= 750){x = 0;y = 0};
+                if(y >= 350){x = 0;y = 0};
+                circle.style.paddingLeft = `${x}px`;
+                circle.style.paddingTop  = `${y}px`;
+                document.getElementById("text").innerHTML=`X:${Math.floor(x)}<br>Y:${Math.floor(y)}`;
+            },10)
         </script>
     </body>
 </html>

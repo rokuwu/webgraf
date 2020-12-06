@@ -10,12 +10,12 @@ Ez a repo a Webgraf verseny-hez van használva, ahova a megoldott (vagy akár f�
   * 1 - Finished
   * 2 - Started
 2. Feladatsor
-  * 1 - Not yet started
+  * 1 - Done
   * 2 - Done
   * 3 - Done
   * 4 - Done
 3. Feladatsor
-  * 1 - Not yet started
+  * 1 - Done
 
 ## Feladat leírások:
   * Feladatsor 1

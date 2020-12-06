@@ -1,16 +1,12 @@
 /* CSS for the registration page */
 
-input {
+input{
     margin: 10px 0;
     display: block;
 }
-label {
+label{
     display: none;
 }
-#error {
+#error{
     color: red;
-}
-
-body {
-    
 }
