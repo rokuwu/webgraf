@@ -28,7 +28,47 @@ h2{
 }
 .small-link{
     font-size: small;
+    display: block;
 }
 table{
     margin-bottom: 0 !important;
+}
+.navbar{
+    background: #E9E9E9;
+    padding: 0 !important;
+    width: 100%;
+}
+.navbar .container{
+    margin: 0 !important;
+}
+.navbar ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.navbar li{
+    display: inline !important;
+    float: left;
+}
+.navbar a{
+    display: block;
+    padding: 8px;
+    background-color: rgba(0, 0, 0, 0.05);
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.5);
+}
+.navbar a:hover{
+    transition: 300ms;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.15);
+}
+.active{
+    text-decoration: underline !important;
+}
+img{
+    width: 100%;
+}
+table thead:nth-child(1){
+    background-color: #638BA8;
 }
