@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <title>X-wing shooter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/dummy.css">
+  </head>
+  <body onload="random()">
+
+  <div class="box">
+    <input type="range" id="slider" class="slider"  min="1" max="10" value="1" oninput="updateValue(this.value)" onchange="updateValue(this.value)">
+    <p style="text-align: center;"><span id="rangeValue">1 mp</span></p>
+  </div>
+
+  <img id="laser" src="img/laser.png">
+
+  <img id="xwing">
+
+    <script>
+      var left=45;
+      var up;
+      var helper=1;
+
+      function updateValue(ev){document.getElementById("rangeValue").innerHTML = ev + " mp";}
+
+      function random(){
+          var images= ["img/xwing1.png", "img/xwing2.png", "img/xwing3.png"];
+          var randomI = Math.floor(Math.random() * images.length);
+          document.getElementById("xwing").src=images[randomI];
+        }
+
+      function move(e)
+      {
+        
+        if (e.keyCode==39)
+        {
+          left+=1;
+          var temp=left+"%";
+          xwing.style.left=temp;
+
+        }
+        
+        if (e.keyCode==37)
+        {
+          left-=1;
+          var temp=left+"%";
+          xwing.style.left=temp;
+          
+        }
+          if (e.keyCode==32 && helper==1)
+        {
+          var speed = document.getElementById("slider").value;
+          helper=0;
+          up=100;
+          laser.style.visibility="visible";
+          var temp45=left+"%";
+          laser.style.left=temp45;
+          var temp=up+"%";
+          laser.style.bottom=temp;
+          var temp2="bottom " + speed + "s linear";
+          laser.style.transition=temp2;
+          setTimeout(function() {
+            var temp3="bottom 0s linear";
+            laser.style.transition=temp3;
+            laser.style.bottom=0;
+            laser.style.visibility="hidden";
+            helper=1;
+          }, speed*1000);
+        }
+      }
+      document.onkeydown=move;
+    </script>
+  <body>
+</html>
