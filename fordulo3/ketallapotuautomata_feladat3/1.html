@@ -31,9 +31,9 @@
 
       function move(e)
       {
-        
         if (e.keyCode==39)
         {
+          e.preventDefault();
           left+=1;
           var temp=left+"%";
           xwing.style.left=temp;
@@ -42,13 +42,16 @@
         
         if (e.keyCode==37)
         {
+          e.preventDefault();
           left-=1;
           var temp=left+"%";
           xwing.style.left=temp;
           
         }
-          if (e.keyCode==32 && helper==1)
+
+        if (e.keyCode==32 && helper==1)
         {
+          e.preventDefault();
           var speed = document.getElementById("slider").value;
           helper=0;
           up=100;
