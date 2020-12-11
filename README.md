@@ -4,85 +4,37 @@ Ez a repo a Webgraf verseny-hez van használva, ahova a megoldott (vagy akár f�
 
 ## Feladatok:
 
-3. Forduló
+4. Forduló
 
-1. Feladatsor
-  * 1 - Done
-  * 2 - Done
-2. Feladatsor
-  * 1 - Done
-  * 2 - Done
-  * 3 - Done
-  * 4 - Done
-3. Feladatsor
-  * 1 - Done
+1. Feladat - Not started
+2. Feladat - Not started
+3. Feladat - Work in progress
 
 ## Feladat leírások:
-  * Feladatsor 1
-  ```
-  1. Készítsetek egy regisztrációs űrlapot, amelyben meg kell adni a felhasználó teljes nevét, bejelentkezési nevét, jelszavát kétszer. Az elküldés előtt ellenőrizni kell:
 
-  minden mező legyen kitöltve
-  a teljes névben legyen szóköz
-  a login név csupa kisbetűket és számokat tartalmazhat
-  a két jelszó megegyezik és legalább 7 karakter hosszú, tartalmaz nagybetűket, kisbetűket és számokat is
-  Ezeket az információkat a kitöltés során (ha a mező fölé kerül az egérkurzor) adja meg a programotok CSS-t használva a példakódhoz hasonló módon.
+1. Feladat:
+```
+Készítsetek egy weboldalt, amely képes első-és másodfokú függvények ábrázolására! Az aktuális (másodfokú vagy elsőfokú) függvény paramétereit (a, b, c) egy űrlapon lehessen folyamatosan megváltoztatni! (Ha c értéke 0, akkor egy egyenest kell ábrázolni.) Az értéktartományt szintén folyamatosan lehessen állítani, kezdetben az X és az Y tengelyen is a [-100;10]0 tartományban vehessenek fel értékeket a függvények. (Pl. az y=ax+b függvényt csak a -100<=x<=100 és a -100<=y<=100 tartományban kell megjeleníteni.) Az értéktartományok az alább értéket kaphassák: 0,10,...,90,100. (Azaz tizesével lehessen ezeket változtatni.) Egy checkbox-szal meg lehessen adni, hogy a rácsvonalak ( x és y "irányban") megjelenítésre kerüljenek-e. A 7 paraméter bármelyik értékének változása frissítse a rajzot. A függvényt #002377 színben kell megjeleníteni. A tengelyeken a nyíl és a feliratok (X,Y) is legyenek megjelenítve. (110010|2 pont)
+```
 
-  2. Készítsetek CSS (külső fájl) felhasználásával kétoldalas honlapot Daenerys sárkányairól!
-  A szövegek egységesen Arial betűtípussal legyenek szedve, de használhattok más, talpnélküli betűtípust is, de akkor csak azt.
-  • A kezdőoldal böngészőben megjelenő címe: Daenerys sárkányai – Kezdőlap
-  • A galéria oldal böngészőben megjelenő címe: Daenerys sárkányai - Galéria
-  • A kezdőlapot index.html néven kell elmenteni, a galéria oldalt pedig galeria.html néven.
+2. Feladat:
+```
+A Star Wars jegyében kell elkészíteni a következő programot! Azt biztosan tudjátok, hogy a Galaktikus Köztársaság békéjét és rendjét Jedi lovagok őrzik. Azt viszont biztosan nem tudjátok, hogy minden Jedi lovag saját maga készíti fénykardját, ez a végső próba, hogy lovagok lehessenek. Tervezzétek meg a MATINF2020-EKE típusú virtuális fénykardot: A markolat hossza 180 pixel. A markolatból egy gombnyomással jön ki a penge, valamint oda zárható vissza.
 
-  • A tartalom egy olyan balra igazított blokkban helyezkedik el (2 oszlop, akárhány sor), amelynek szélessége 700 képpont mindkét oldalon.
-  • Nem használhattok <table> utasítást! A blokknak két oszlopa legyen!
-  • Mindkét oldalon a blokk jobb oldalán (a teljes jobboldali oszlopban) egy egész alakos Daenerys kép legyen!
-  • Mindkét oldalon a blokk első sorában egy kép legyen, amelyen mindhárom sárkány látható. A kép Daenerys képe fölé ne nyúljon be (a jobboldali oszlop fölé)!
+- Erőörvénygyűrű a markolat fölött helyezkedik el és tartalmazza a szabályzókat. Méretére nincs megkötés, de nem akadályozhatja a Jedi lovagot a harcban.
+- A pengehossz-szabályzó egy csavar, és minél többet tekerünk rajta, annál hosszabb lesz a penge. A penge hossza maximum 777 pixel.
+- Pengeerő-szabályzó a penge erejét határozza meg. Hasonló csavar, mint a pengehossz szabályzó. A korai fénykardokon még nem létezett. A MATINF2020-EKE típusnál ez a 25 és 35 pixel között állítható pengeszélességet módosítja.
+- A kristály határozza meg a penge színét, ami a vörösből a zöldön át egészen a kékig változhat. A választható kristály színe, fényereje, kontrasztja és átlátszósága szabályozható legyen. (1100100|2 pont)
+```
 
-  • A 700 képpontos blokk celláinak belső margója (a tartalom és a szegély közti távolság) 10 képpont legyen!
-  Az első oldalon:
-  • A „Daenerys sárkányai” szöveg egyes címsor (h1) legyen. Ez az első sorban a sárkányokat bemutató kép felett legyen, annak felső részén!
-  • Ez alatt legyen egy szöveg a sárkányokról, címe: „Mik azok a sárkányok?". Kettes címsor (h2) legyen, színe: #000080
-  • Alatta legyen egy táblázat a 3 sárkány adatairól. Név, súly, szín, stb. (Itt lehet használni <table> utasítást!) Lehetnek az adatok fiktívek is!:)
-  • A táblázat alatt adjátok meg a forrásaitokat, ahonnan az adatokat vettétek! A forrásoldalak új ablakban jelenjenek meg!
-  • A „Mik azok a sárkányok?”, „Képgaléria” szövegek kettes címsorok (h2) legyenek, színük: #000080
+3. Feladat:
+```
+Azért, hogy egy kaputelefonon ne lehessen kikövetkeztetni a kódot a gombok megviseltsége alapján, egyes helyeken már bevezették a digitális kaputelefont, amelyen a számok sorrendje mindig más. A feladat egy ilyen kaputelefon szimulálása.
 
-  • A sárkány adatait tartalmazó táblázat első sorának háttérszíne: #638BA8 (Ez valódi táblázat legyen!)
+- A honlapon jelenjen meg egy táblázat, benne a 10 számmal, megfelelő elrendezésben (3 sor 3 gombbal, és egy alul középen).
+- A számok sorrendje véletlenszerű legyen.
+- A honlap érzékelje a számok bevitelét (a számra kattintva azt beveszi). 4 számjegy bevitelét engedje, az lesz egy kód. Több lenyomást ne engedélyezzen.
+- Ha a felhasználó helyes kódot ütött be, akkor jelezze az oldal, hogy az ajtó kinyílt, egyébként figyelmeztessen a rossz kódra. (A helyes kód legyen 8336.)
+- Legyen alatta egy gomb, amelynek megnyomására új, véletlenszerű (gomb) sorrend generálódik! (110010|2 pont)
 
-  A Galéria oldalon az első sor alatt (és a navigáció alatt) legyen 4 kép, a képek fölött (de a navigáció alatt) a Képgaléria szó, kettes címsor (h2) legyen, színe: #000080.
-
-  • Mindkét oldalon a 3 sárkányos kép alatt legyen egy navigációs menüt tartalmazó szürke sáv, színkódja: #E9E9E9. (Kezdőlap Galéria elemekkel)
-
-  Nem használhattok HTML utasítást formázásra, azaz pl. <strong>, <font color=....>, stb.
-  ```
-
-  * Feladatsor 2
-  ```
-  1. Készítsetek egy olyan oldalt, amelyben egy CSS-sel formázott (király)kék színű, nagy méretű téglalapban (div tag) egy piros színű (div tag) kör mozog folyamatosan, fentről lefelé, valamint balról 
-  jobbra is, azaz átlós irányban, végtelen ideig! A körben legyen egy kép Daenerysról! A királykék színű téglalap alatt a kör aktuális koordinátája jelenjen meg! 
-
-  2. Készítsetek egyszerű reflexteszt játékot JavaScript kódban! Az oldalon a jobb felső sarokban jelenjen meg Daenerys valamelyik sárkánya (Drogon, Rhageal, Viserion). (Minden indításkor más-más, 
-  legalább 3 különböző sárkányotok legyen!)
-
-  A játék során a képernyő közepén megjelenik egy sárkány, amelyik vagy a jobb felső sarokban lévő, csak nagyobb méretű, vagy pedig egy teljesen más. (Lehet nem sárkány is.) Az előbbis esetben a 
-  felhasználónak kattintania kell a megjelenő sárkányra, egyébként viszont nem. A sikeres és a sikertelen kattintások is jelenjenek meg a képernyőn! A sárkány (vagy nem sárkány) mindig a képernyő 
-  közepén jelenjen meg! Ha 2 másodperc után nincs kattintás, akkor adja a program a következő képet! A program alapértelmezésben 10 képet jelenítsen meg, de ezt a felhasználónak legyen lehetősége 
-  növelni!
-
-  3. A képernyő két szélén legyen 1-1 béka, de ne egyformák! Közöttük egy vonalban legalább 10, legfeljebb 30 kő! A békák balról és jobbról is ezekre a kövekre ugrálhatnak. Minimum 1, maximum 3 kő 
-  "távolságot" tudnak átugrani, azaz vagy a következő kőre, vagy az azt követőre, vagy a harmadik kőre ugorhatnak. A békák felváltva ugornak, visszafelé nem, csak előre. A szimuláció akkor kezdődik, ha 
-  a felhasználó a Start gombra kattint, amely zöldes árnyalatú legyen! Az a béka nyer, amelyik ráugrik a másikra, vagy átugorja a másikat! Az, hogy egy béka az 1., a 2. vagy a 3. kőre ugrik, az 
-  véletlenszerű legyen. A játék megkezdése előtt lehessen fogadni valamelyik békára. A szimuláció végén a program írja ki, hogy a játékos nyert vagy sem! Az alkalmazás háttere a "helyzetnek" megfelelő 
-  kép legyen! :-)
-
-  4. A fenti játékot kell elkészítenetek megint, de most mindig az a béka ugrik, amelyikre a felhasználó rákattint, de az, hogy hányat ugrik a béka (1, 2, 3) azt a felhasználó adja meg! További 
-  változtatás, hogy a békák hátrafelé is ugorhatnak, persze a "pályáról" nem ugorhatnak le! Most ne lehessen fogadni, hogy melyik béka nyer!:-) Azaz egy kétszemélyes játékot kell lekódolnotok! A több 
-  korlát megegyezik a fentiekkel! (Start gomb sem kell!)
-  ```
-
-  * Feladatsor 3
-  ```
-  1. A fenti téglalap helyett egy Star Wars ürhajót (X szrányút) kell a képernyő aljára tenni (véletlenszerűen jelenjen meg 3 közül egy). Ezt lehessen jobbra és balra mozgatni. A space billentyűt 
-  megnyomva a űrhajó tudjon lőni, azaz egy lézernyaláb (lézerfény) induljon el felfelé egyenesen. A programban a felhasználó beállíthassa a lézernyaláb sebességét! Addig ne lehessen újra lőni, amig a 
-  lézernyaláb  el nem érte a képernyő tetejét és el nem tűnt! A "játéknak" egy világűrt reprezentáló háttere legyen!
-  ```
+```
