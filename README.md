@@ -8,7 +8,7 @@ Ez a repo a Webgraf verseny-hez van használva, ahova a megoldott (vagy akár f�
 
 1. Feladat - Not started
 2. Feladat - Not started
-3. Feladat - Work in progress
+3. Feladat - Done
 
 ## Feladat leírások:
 

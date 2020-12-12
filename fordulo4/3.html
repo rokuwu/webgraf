@@ -3,9 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Feladat 3</title>
+    <style>
+        td{
+            border: solid 1px;
+            background-color: rgb(141, 158, 158);
+            padding: 25px;
+            cursor: pointer;
+            transition: 200ms;
+        }
+        td:active{
+            background-color: rgb(115, 131, 131);
+            transition: 200ms;
+        }
+        .disabled{
+            visibility: hidden;
+        }
+        input{
+
+        }
+        input[type=text]{
+            max-width: 177px;
+        }
+        
+    </style>
 </head>
-<body>
-    
+<body onload="randomButtons();">
+    <div>
+        <input readonly type="text" name="key" id="key">
+        <table id="table">
+            <tr>
+                <td class="button"></td>
+                <td class="button"></td>
+                <td class="button"></td>
+            </tr>
+            <tr>
+                <td class="button"></td>
+                <td class="button"></td>
+                <td class="button"></td>
+            </tr>
+            <tr>
+                <td class="button"></td>
+                <td class="button"></td>
+                <td class="button"></td>
+            </tr>
+            <tr>
+                <td class="disabled"></td>
+                <td class="button"></td>
+                <td class="disabled"></td>
+            </tr>
+        </table>
+    </div>
+    <input type="button" id="shuffle" value="Új számok kérése">
+
+    <script>
+        const validKey=8336; //helyes kód
+        const table=document.getElementById("table");
+        const buttons=document.getElementsByClassName("button");
+        const key=document.getElementById("key");
+        const shuffle=document.getElementById("shuffle");
+        
+        function randomButtons(){
+            var numbers=[];
+            var i=0;
+            var l=0;
+            var prevLength=0;
+            //Random gen/elhelyezés
+            while(numbers.length<10){
+                prevLength=numbers.length;
+                if(numbers.length<=prevLength){
+                    numbers.push(Math.floor(Math.random()*10));
+                    numbers=[...new Set(numbers)];
+                    i++;
+                }
+            }
+            //Gomb kiírás
+            for(var j=0;j<table.rows.length;j++){
+                for(var k=0;k<table.rows[j].cells.length;k++){
+                    if(table.rows[j].cells[k].className=="button"){
+                        table.rows[j].cells[k].innerHTML=numbers[l];
+                        l++;
+                    }
+                }
+            }
+        }
+
+        //Event listener
+        for(var m=0;m<buttons.length;m++){
+            buttons[m].addEventListener("click",function(){                
+                key.value+=`${this.innerHTML}`;
+                if(key.value.length==4){
+                    if(key.value==validKey){
+                        alert("Helyes kód! Az ajtó kinyílt.");
+                        //minden lenulláz
+                        key.value="";
+                        randomButtons();
+                    }
+                    else{
+                        alert("Helytelen kód!");
+                        key.value="";
+                        randomButtons();
+                    }
+                }
+            })
+        }
+        
+        //Új számok
+        shuffle.addEventListener("click",function(){
+            randomButtons();
+        })
+    </script>
 </body>
 </html>
