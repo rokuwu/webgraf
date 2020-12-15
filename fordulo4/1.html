@@ -3,9 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Feladat 1</title>
+    <style>
+        input[type="text"]{
+            display: inline-block;
+        }
+        #settings{
+            margin-bottom: 15px;
+            padding: 8px 10px;
+            background-color: #e0e8f1;
+        }
+    </style>
 </head>
-<body>
-    
+<body onload="init()">
+    <div id="settings">
+        <p>Függvény paraméterek:</p>
+        <span>a:</span><input type="text" name="a" id="a">
+        <span>b:</span><input type="text" name="b" id="b">
+        <span>c:</span><input type="text" name="c" id="c">
+
+        <p>Értéktartomány:</p>
+        <span>x:</span><input type="text" name="x" id="x">
+        <span>y:</span><input type="text" name="y" id="y">
+
+        <p>Rácsvonal és feliratok:</p>
+        <input type="checkbox" name="grid" id="grid">
+    </div>
+
+    <canvas id="canvas" width=1000 height=1000"></canvas>
+
+    <script>
+        const aInp=document.getElementById("a");
+        const bInp=document.getElementById("b");
+        const cInp=document.getElementById("c");
+        const xInp=document.getElementById("x");
+        const yInp=document.getElementById("y");
+        const gInp=document.getElementById("grid");
+        const canvas=document.getElementById("canvas");
+        const ctx=canvas.getContext("2d");
+        const scale=10; //alap 100 helyett 1000-re nagyítva a láthatóság miatt
+
+        /*
+            másodfokú függvény: a*(x-b)^2+c
+
+            a, b, c állítható -> 3 input box
+            tizesével állítható értéktartomány
+            ki/be kapcsolható rácsvonal
+        */
+
+        gInp.addEventListener("change",function(){
+            if(gInp.checked){
+                clear();
+                grid();
+                init();
+            }
+            else{
+                clear();
+                init();
+            }
+        })
+
+        function init(){
+            ctx.strokeStyle = "black"
+            ctx.lineWidth = 2;
+            //x tengely
+            ctx.beginPath(); //tengely
+            ctx.moveTo(0,50*scale);
+            ctx.lineTo(100*scale,50*scale);
+            ctx.stroke();
+            ctx.beginPath(); //nyíl felső szár
+            ctx.moveTo(100*scale,50*scale);
+            ctx.lineTo(98*scale,48*scale);
+            ctx.stroke();
+            ctx.beginPath(); //nyíl alsó szár
+            ctx.moveTo(100*scale,50*scale);
+            ctx.lineTo(98*scale,52*scale);
+            ctx.stroke();
+
+            //y tengely
+            ctx.beginPath(); //tengely
+            ctx.moveTo(50*scale,0);
+            ctx.lineTo(50*scale,100*scale);
+            ctx.stroke();
+            ctx.beginPath(); //nyíl bal szár
+            ctx.moveTo(50*scale,100*scale);
+            ctx.lineTo(48*scale,98*scale);
+            ctx.stroke();
+            ctx.beginPath(); //nyíl jobb szár
+            ctx.moveTo(50*scale,100*scale);
+            ctx.lineTo(52*scale,98*scale);
+            ctx.stroke();
+        }
+
+        function grid(){
+            let posY=0;
+            let posX=0;
+            ctx.lineWidth=0.5;
+            while(posY<=100*scale){
+                ctx.beginPath(); // y
+                ctx.moveTo(posY,0);
+                ctx.lineTo(posY,100*scale);
+                ctx.stroke();
+
+                posY+=10*scale;
+            }
+            while(posX<=100*scale){
+                ctx.beginPath(); // x
+                ctx.moveTo(0,posX);
+                ctx.lineTo(100*scale,posX);
+                ctx.stroke();
+
+                posX+=10*scale;
+            }
+        }
+
+        function clear(){
+            ctx.clearRect(0,0,100*scale,100*scale);
+        }
+    </script>
 </body>
 </html>
