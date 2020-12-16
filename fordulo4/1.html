@@ -26,7 +26,7 @@
         <span>x:</span><input type="text" name="x" id="x">
         <span>y:</span><input type="text" name="y" id="y">
 
-        <p>Rácsvonal és feliratok:</p>
+        <p>Rácsvonal:</p>
         <input type="checkbox" name="grid" id="grid">
     </div>
 
@@ -61,7 +61,7 @@
                 clear();
                 init();
             }
-        })
+        });
 
         function init(){
             ctx.strokeStyle = "black"
@@ -93,6 +93,8 @@
             ctx.moveTo(50*scale,100*scale);
             ctx.lineTo(52*scale,98*scale);
             ctx.stroke();
+
+            labels(); //feliratok a tengelyek mentén
         }
 
         function grid(){
@@ -119,6 +121,35 @@
 
         function clear(){
             ctx.clearRect(0,0,100*scale,100*scale);
+        }
+        labels();
+        function labels(){
+            let posX=0;
+            let posY=0;
+            ctx.translate(50*scale,50*scale);
+            while(posX<=50*scale){
+                ctx.fillText(`${posX/5}`,posX,0);
+                
+                posX+=10*scale;
+            }
+            while(posY>=(-50)*scale){
+                ctx.fillText(`${posY/5+2*(-posY/5)}`,0,posY);
+                
+                posY-=10*scale;
+            }
+            posX=0;
+            posY=0;
+            while(posY<=(50)*scale){
+                if(posY!=0){ctx.fillText(`-${posY/5}`,0,posY);}
+                                
+                posY+=10*scale;
+            }
+            while(posX>=-50*scale){
+                if(posX!=0){ctx.fillText(`${posX/5}`,posX,0);}
+                                
+                posX-=10*scale;
+            }
+            ctx.translate(-50*scale,-50*scale);
         }
     </script>
 </body>
