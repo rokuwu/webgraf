@@ -18,12 +18,12 @@
 <body onload="init()">
     <div id="settings">
         <p>Függvény paraméterek:</p>
-        <span>a:</span><input type="text" name="a" id="a">
-        <span>b:</span><input type="text" name="b" id="b">
-        <span>c:</span><input type="text" name="c" id="c">
+        <span>a:</span><input type="text" name="a" id="a" onchange="drawCanvas();">
+        <span>b:</span><input type="text" name="b" id="b" onchange="drawCanvas();">
+        <span>c:</span><input type="text" name="c" id="c" onchange="drawCanvas();">
 
         <p>Értéktartomány:</p>
-        <span>x:</span><select name="" id="">
+        <span>x:</span><select name="x" id="x" onchange="drawCanvas();">
             <option value="10">10</option>
             <option value="20">20</option>
             <option value="30">30</option>
@@ -35,7 +35,7 @@
             <option value="90">90</option>
             <option selected="selected" value="100">100</option>
         </select>
-        <span>y:</span><select name="" id="">
+        <span>y:</span><select name="y" id="y" onchange="drawCanvas();">
             <option value="10">10</option>
             <option value="20">20</option>
             <option value="30">30</option>
@@ -49,7 +49,7 @@
         </select>
 
         <p>Rácsvonal:</p>
-        <input type="checkbox" name="grid" id="grid">
+        <input type="checkbox" name="grid" id="grid" onchange="drawCanvas();">
     </div>
 
     <canvas id="canvas" width=2000 height=2000"></canvas>
@@ -73,17 +73,13 @@
             ki/be kapcsolható rácsvonal
         */
 
-        gInp.addEventListener("change",function(){
+        function drawCanvas(){
+            clear();
             if(gInp.checked){
-                clear();
                 grid();
-                init();
             }
-            else{
-                clear();
-                init();
-            }
-        });
+            init();
+        }
 
         function init(){
             ctx.strokeStyle = "black"
