@@ -1,11 +1,381 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Lightsaber</title>
+    <style>
+        #screw1 {
+        height: 17px;
+        width: 17px;
+        position: relative;
+        left: 50%;
+        bottom: 205px;
+        transform: translateX(-50%);
+        }
+        #screw2 {
+        height: 17px;
+        width: 17px;
+        position: relative;
+        left: 50%;
+        bottom: 243px;
+        transform: translateX(-50%);
+        }
+        .center {
+        width: 67px;
+        height: 0px;         
+        position: relative;
+        top: 0;
+        bottom:0px;
+        left:50%;
+        }
+        #laser {
+        position: relative;
+        width: 35px;
+        height: 0px;
+        transform: translateX(45%);
+        border-radius: 20px 20px 0 0;
+        background-color: white;
+        /*-webkit-box-shadow: 0px 0px 50px 25px RGB(255, 0, 0); */
+        box-shadow: 0px 0px 50px 25px RGB(255, 0, 0);
+        opacity: 0;
+        }
+        #R{
+        position: relative;
+        bottom: 322px;
+        -webkit-appearance: none;
+        width: 37px;
+        height: 4px;
+        background: red;
+        outline: none;
+        border-radius: 15px;
+        transform: translateX(35%);
+        }
+        #R::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 8px;
+        height: 8px;
+        border-radius: 8px;
+        background: #bbbbbb;
+        cursor: pointer;
+        }
+        #R::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        border-radius: 25px;
+        background: #bbbbbb;
+        cursor: pointer;
+        }
+        #G{
+        position: relative;
+        bottom: 332px;
+        -webkit-appearance: none;
+        width: 37px;
+        height: 4px;
+        background: green;
+        outline: none;
+        border-radius: 15px;
+        transform: translateX(35%);
+        }
+        #G::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 8px;
+        height: 8px;
+        border-radius: 8px;
+        background: #bbbbbb;
+        cursor: pointer;
+        }
+        #G::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        border-radius: 25px;
+        background: #bbbbbb;
+        cursor: pointer;
+        }
+        #B{
+        position: relative;
+        bottom: 342px;
+        -webkit-appearance: none;
+        width: 37px;
+        height: 4px;
+        background: blue;
+        outline: none;
+        border-radius: 15px;
+        transform: translateX(35%);
+        }
+        #B::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 8px;
+        height: 8px;
+        border-radius: 8px;
+        background: #bbbbbb;
+        cursor: pointer;
+        }
+        #B::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        border-radius: 25px;
+        background: #bbbbbb;
+        cursor: pointer;
+        }
+        #A{
+        position: relative;
+        bottom: 352px;
+        -webkit-appearance: none;
+        width: 37px;
+        height: 4px;
+        background: white;
+        outline: none;
+        border-radius: 15px;
+        transform: translateX(35%);
+        }
+        #A::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 8px;
+        height: 8px;
+        border-radius: 8px;
+        background: #bbbbbb;
+        cursor: pointer;
+        }
+        #A::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        border-radius: 25px;
+        background: #bbbbbb;
+        cursor: pointer;
+        }
+        #Br{
+        position: relative;
+        bottom: 362px;
+        -webkit-appearance: none;
+        width: 37px;
+        height: 4px;
+        background: rgb(255, 196, 0);
+        outline: none;
+        border-radius: 15px;
+        transform: translateX(35%);
+        }
+        #Br::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 8px;
+        height: 8px;
+        border-radius: 8px;
+        background: #bbbbbb;
+        cursor: pointer;
+        }
+        #Br::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        border-radius: 25px;
+        background: #bbbbbb;
+        cursor: pointer;
+        }
+        #C{
+        position: relative;
+        bottom: 372px;
+        -webkit-appearance: none;
+        width: 37px;
+        height: 4px;
+        background: rgb(0, 89, 95);
+        outline: none;
+        border-radius: 15px;
+        transform: translateX(35%);
+        }
+        #C::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 8px;
+        height: 8px;
+        border-radius: 8px;
+        background: #bbbbbb;
+        cursor: pointer;
+        }
+        #C::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        border-radius: 25px;
+        background: #bbbbbb;
+        cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="center">
+        <div id="laser"></div>
+        <svg width="67" height="370" viewBox="0 0 67 370" fill="none">
+            <path d="M55.8498 360.882V369.996H11.1502V360.882L3 354.697V338.097L10.4982 332.563V317.591H7.89014V270.394H9.52018V266.813H8.54216V189.996H58.4578V266.813H57.4798V270.394H59.1099V317.591H56.5018V332.563L64 338.097V354.697L55.8498 360.882Z" fill="#C4C4C4"/>
+            <path d="M55.8498 360.882V369.996H33.5L33.5 189.996H58.4578V266.813H57.4798V270.394H59.1099V317.591H56.5018V332.563L64 338.097V354.697L55.8498 360.882Z" fill="#8B8B8B"/>
+            <path d="M59.1099 270.394V317.591H7.89014V270.394H59.1099Z" fill="#282828"/>
+            <path d="M59.1099 270.394V317.591H33.5L33.5 270.394H59.1099Z" fill="black"/>
+            <circle id="power" onclick="poweronoff()" cx="33.5" cy="221.16" r="8.5" fill="black"/>
+            <path onclick="poweronoff()" d="M33.5 214.549C32.6318 214.549 31.7721 214.72 30.97 215.052C30.1679 215.384 29.4391 215.871 28.8252 216.485C28.2113 217.099 27.7244 217.828 27.3921 218.63C27.0599 219.432 26.8889 220.292 26.8889 221.16C26.8889 222.028 27.0599 222.888 27.3921 223.69C27.7244 224.492 28.2113 225.221 28.8252 225.835C29.4391 226.449 30.1679 226.936 30.97 227.268C31.7721 227.6 32.6318 227.771 33.5 227.771L33.5 221.16V214.549Z" fill="#CF0000"/>
+            <path onclick="poweronoff()" d="M33.5 214.549C34.3682 214.549 35.2279 214.72 36.03 215.052C36.8321 215.384 37.5609 215.871 38.1748 216.485C38.7887 217.099 39.2756 217.828 39.6079 218.63C39.9401 219.432 40.1111 220.292 40.1111 221.16C40.1111 222.028 39.9401 222.888 39.6079 223.69C39.2756 224.492 38.7887 225.221 38.1748 225.835C37.5609 226.449 36.8321 226.936 36.03 227.268C35.2279 227.6 34.3682 227.771 33.5 227.771L33.5 221.16V214.549Z" fill="#750000"/>
+            <path d="M57.4825 184.978V190H9.51747V184.978L13.9363 181.351V139.221L9.51747 135.594V133.362L13.9363 129.735V128.898L9.51747 125.271V123.039L13.9363 119.412V118.575L9.51747 114.948V112.716L13.9363 109.089V108.252L9.51747 104.625V102.393L13.9363 98.7659V97.9289L9.51747 94.3019V92.0699H22.0941V74.7722H18.695V71.1452H9.51747V68.0762H13.9363V55.8001H24.4735V34.8751H18.3551V29.0161H10.1973V12.834H5.09864V4.18501H0V0H67V4.18501H61.9014V12.834H56.8027V29.0161H48.6449V34.8751H42.5265V55.8001H53.0637V68.0762H57.4825V71.1452H48.305V74.7722H44.9059V92.0699H57.4825V94.3019L53.0637 97.9289V98.7659L57.4825 102.393V104.625L53.0637 108.252V109.089L57.4825 112.716V114.948L53.0637 118.575V119.412L57.4825 123.039V125.271L53.0637 128.898V129.735L57.4825 133.362V135.594L53.0637 139.221V181.351L57.4825 184.978Z" fill="#C4C4C4"/>
+            <path d="M57.4825 184.978V190H33.5V0H67V4.18501H61.9014V12.834H56.8027V29.0161H48.6449V34.8751H42.5265V55.8001H53.0637V68.0762H57.4825V71.1452H48.305V74.7722H44.9059V92.0699H57.4825V94.3019L53.0637 97.9289V98.7659L57.4825 102.393V104.625L53.0637 108.252V109.089L57.4825 112.716V114.948L53.0637 118.575V119.412L57.4825 123.039V125.271L53.0637 128.898V129.735L57.4825 133.362V135.594L53.0637 139.221V181.351L57.4825 184.978Z" fill="#8B8B8B"/>
+            <path d="M57.4825 184.978V190H9.51747V184.978L13.9363 181.351V139.221L9.51747 135.594V133.362L13.9363 129.735V128.898L9.51747 125.271V123.039L13.9363 119.412V118.575L9.51747 114.948V112.716L13.9363 109.089V108.252L9.51747 104.625V102.393L13.9363 98.7659V97.9289L9.51747 94.3019V92.0699H57.4825V94.3019L53.0637 97.9289V98.7659L57.4825 102.393V104.625L53.0637 108.252V109.089L57.4825 112.716V114.948L53.0637 118.575V119.412L57.4825 123.039V125.271L53.0637 128.898V129.735L57.4825 133.362V135.594L53.0637 139.221V181.351L57.4825 184.978Z" fill="#282828"/>
+            <path d="M57.4851 184.978V190H33.5025V92.07H57.4851V94.302L53.0662 97.929V98.766L57.4851 102.393V104.625L53.0662 108.252V109.089L57.4851 112.716V114.948L53.0662 118.575V119.412L57.4851 123.039V125.271L53.0662 128.899V129.736L57.4851 133.363V135.595L53.0662 139.222V181.351L57.4851 184.978Z" fill="black"/>
+            <path d="M44.9059 74.7722V92.0699H22.0941V74.7722H18.695V71.1452H9.51747V68.0762H13.9363V55.8001H53.0637V68.0762H57.4825V71.1452H48.305V74.7722H44.9059Z" fill="#B5A687"/>
+            <path d="M44.9059 74.7722V92.0699H33.5V55.8001H53.0637V68.0762H57.4825V71.1452H48.305V74.7722H44.9059Z" fill="#897A5B"/>
+            <path d="M42.5265 34.8751V55.8001H24.4735V34.8751H42.5265Z" fill="#9E6C63"/>
+            <path d="M42.5265 34.8751V55.8001H33.5V34.8751H42.5265Z" fill="#723C32"/>
+            <path id="arrow_r_1" onclick="width1r()" d="M49.2923 176.613C50.0108 176.986 50.0108 178.014 49.2923 178.387L44.9611 180.638C44.2954 180.984 43.5 180.501 43.5 179.751V175.249C43.5 174.499 44.2954 174.016 44.9611 174.362L49.2923 176.613Z" fill="#C4C4C4"/>
+            <path id="arrow_r_2" onclick="height2r()" d="M49.2923 155.613C50.0108 155.986 50.0108 157.014 49.2923 157.387L44.9611 159.638C44.2954 159.984 43.5 159.501 43.5 158.751V154.249C43.5 153.499 44.2954 153.016 44.9611 153.362L49.2923 155.613Z" fill="#C4C4C4"/>
+            <path id="arrow_l_1" onclick="width1l()" d="M17.7077 176.613C16.9892 176.986 16.9892 178.014 17.7077 178.387L22.0389 180.638C22.7046 180.984 23.5 180.501 23.5 179.751V175.249C23.5 174.499 22.7046 174.016 22.0389 174.362L17.7077 176.613Z" fill="#C4C4C4"/>
+            <path id="arrow_l_2" onclick="height2l()"d="M17.7077 155.613C16.9892 155.986 16.9892 157.014 17.7077 157.387L22.0389 159.638C22.7046 159.984 23.5 159.501 23.5 158.751V154.249C23.5 153.499 22.7046 153.016 22.0389 153.362L17.7077 155.613Z" fill="#C4C4C4"/>
+        </svg>            
+        <div id="screw1">
+            <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
+                <path id="screw1_2" d="M8.5 0L15.8612 4.25V12.75L8.5 17L1.13878 12.75V4.25L8.5 0Z" fill="#C4C4C4"/>
+                <circle id="screwc1" r="4.5" transform="matrix(-1 0 0 1 8.5 8.5)" fill="black"/>
+            </svg>
+        </div>
+
+        <div id="screw2">
+            <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
+                <path id="screw2_2" d="M8.5 0L15.8612 4.25V12.75L8.5 17L1.13878 12.75V4.25L8.5 0Z" fill="#C4C4C4"/>
+                <circle id="screwc2" r="4.5" transform="matrix(-1 0 0 1 8.5 8.5)" fill="black"/>
+            </svg>               
+        </div>
+        <input type="range" id="R" name="Red" min="0" max="255" value="255">
+        <input type="range" id="G" name="Green" min="0" max="255" value="0">
+        <input type="range" id="B" name="Blue" min="0" max="255" value="0">
+        <input type="range" id="A" name="Blue" min="0" max="100" value="100">
+        <input type="range" id="Br" name="Blue" min="0" max="200" value="100">
+        <input type="range" id="C" name="Blue" min="0" max="200" value="100">
+    </div>
+
+    <script>
+        var height01=0;
+        var value1=0;
+        var height02=0;
+        var value2=35;
+        var marginv=0;
+        var pos=0;
+
+        function changecolor(){
+            let red = document.getElementById('R').value;
+            let green = document.getElementById('G').value;
+            let blue = document.getElementById('B').value;
+            let alphainteger = document.getElementById('A').value;
+            let alpha = alphainteger/100;
+            let brightness = document.getElementById('Br').value;
+            let contrast = document.getElementById('C').value;
+            let color = 'rgba(' + red + ',' + green + ',' + blue + ',' + alpha + ')';
+            document.getElementById('laser').style.filter = 'contrast(' + contrast + '%) brightness(' + brightness + '%)';
+            document.getElementById('laser').style.boxShadow = '0px 0px 50px 25px ' + color;
+            document.getElementById('laser').style.backgroundColor = 'rgba(255, 255, 255' + alpha + ')';
+        }
+        document.getElementById('R').addEventListener('input', changecolor);
+        document.getElementById('G').addEventListener('input', changecolor);
+        document.getElementById('B').addEventListener('input', changecolor);
+        document.getElementById('A').addEventListener('input', changecolor);
+        document.getElementById('Br').addEventListener('input', changecolor);
+        document.getElementById('C').addEventListener('input', changecolor);
+
+
+
+
+        function height2r(){
+            if(value1>0){
+
+                if (value1==770)
+                {
+                 height01+=5;
+                 value1+=7;
+                 document.getElementById("screw2").style.transform="translateX(-50%) rotate("+ height01+"deg)";
+                 document.getElementById("laser").style.height=value1+"px";
+                 window.scrollBy(0, 7);
+                }
+                if (value1<=760)
+                {
+                height01+=5;
+                value1+=10;
+                document.getElementById("screw2").style.transform="translateX(-50%) rotate("+ height01+"deg)";
+                document.getElementById("laser").style.height=value1+"px";
+                window.scrollBy(0, 10);
+                }
+                if(value1<=200 && value1>0)
+                {
+                    marginv-=10;
+                    document.getElementById("laser").style.marginTop=marginv+"px";
+                }
+            }
+        }
+
+        function height2l(){
+                if (value1>=10 && value1<=770)
+                {
+                height01-=5;
+                value1-=10;
+                document.getElementById("screw2").style.transform="translateX(-50%) rotate("+ height01+"deg)";
+                document.getElementById("laser").style.height=value1+"px";
+                window.scrollBy(0, -10);
+                }
+                if (value1==777)
+                {
+                 height01-=5;
+                 value1-=7;
+                 document.getElementById("screw2").style.transform="translateX(-50%) rotate("+ height01+"deg)";
+                 document.getElementById("laser").style.height=value1+"px";
+                 window.scrollBy(0, -7);
+                }
+                if(value1<=200 && value1>0)
+                {
+                    marginv+=10;
+                    document.getElementById("laser").style.marginTop=marginv+"px";
+                }
+                if (value1==0)
+                {
+                    document.getElementById("laser").style.opacity="0";
+                }
+        }
+
+        function width1r(){
+                if (value2<35)
+                {
+                 height02+=5;
+                 value2+=1;
+                 pos+=1;
+                 document.getElementById("screw1").style.transform="translateX(-50%) rotate("+ height02+"deg)";
+                 document.getElementById("laser").style.width=value2+"px";
+                 document.getElementById("laser").style.right=pos + "px";
+                }
+        }
+
+        function width1l(){
+                if (value2>25)
+                    {
+                    height02-=5;
+                    value2-=1;
+                    pos-=1;
+                    document.getElementById("screw1").style.transform="translateX(-50%) rotate("+ height02+"deg)";
+                    document.getElementById("laser").style.width=value2+"px";
+                    document.getElementById("laser").style.right=pos + "px";
+                    }
+        }
+        function poweronoff(){
+            if(value1==0)
+            {
+                document.getElementById("laser").style.height="420px";
+                value1=420;
+                marginv=0;
+                document.getElementById("laser").style.marginTop=marginv+"px";
+                document.getElementById("laser").style.opacity="1";
+                document.getElementById("laser").style.transition="height 0.5s linear"
+            }
+            else
+            {
+                document.getElementById("laser").style.height="0px";
+                value1=0;
+                setTimeout(function() {document.getElementById("laser").style.opacity="0";}, 500);
+                document.getElementById("laser").style.transition="height 0.5s linear";
+            }
+        }
+    </script>
 </body>
 </html>
