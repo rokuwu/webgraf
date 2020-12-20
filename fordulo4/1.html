@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feladat 1</title>
     <style>
+        /* (^///^) */
+
         input[type="text"]{
             display: inline-block;
         }
@@ -15,7 +17,7 @@
         }
     </style>
 </head>
-<body onload="init()">
+<body onload="init()"> <!-- <( ‵□′)───C＜─___-)|| -->
     <div id="settings">
         <p>Függvény paraméterek:</p>
         <span>a:</span><input type="text" name="a" id="a" onchange="drawCanvas();">
@@ -23,7 +25,7 @@
         <span>c:</span><input type="text" name="c" id="c" onchange="drawCanvas();">
 
         <p>Értéktartomány:</p>
-        <span>x:</span><select name="x" id="x" onchange="drawCanvas();">
+        <span>x:</span><select name="x" id="x" onchange="changeCanvas();">
             <option value="10">10</option>
             <option value="20">20</option>
             <option value="30">30</option>
@@ -35,7 +37,7 @@
             <option value="90">90</option>
             <option selected="selected" value="100">100</option>
         </select>
-        <span>y:</span><select name="y" id="y" onchange="drawCanvas();">
+        <span>y:</span><select name="y" id="y" onchange="changeCanvas();">
             <option value="10">10</option>
             <option value="20">20</option>
             <option value="30">30</option>
@@ -63,63 +65,68 @@
         const gInp=document.getElementById("grid");
         const canvas=document.getElementById("canvas");
         const ctx=canvas.getContext("2d");
-        const scale=10; //alap 100 helyett 1000-re nagyítva a láthatóság miatt
-
-        /*
-            másodfokú függvény: a*(x-b)^2+c
-
-            a, b, c állítható -> 3 input box
-            tizesével állítható értéktartomány
-            ki/be kapcsolható rácsvonal
-        */
+        var width=canvas.width;
+        var height=canvas.height;
+        const scale=10;
 
         function drawCanvas(){
             clear();
             if(gInp.checked){
                 grid();
             }
-            init();
-            draw();
+            init(); // (* ￣︿￣)
+        }
+
+        function changeCanvas(){
+            canvas.width = xInp.value * 20;
+            canvas.height = yInp.value * 20; 
+            width = canvas.width;
+            height = canvas.height;
+            drawCanvas();
         }
 
         function init(){
             ctx.strokeStyle = "black"
             ctx.lineWidth = 2;
+
             //x tengely
             ctx.beginPath(); //tengely
-            ctx.moveTo(0,100*scale);
-            ctx.lineTo(200*scale,100*scale);
+            ctx.moveTo(0,height/2);
+            ctx.lineTo(width,height/2);
             ctx.stroke();
-            ctx.beginPath(); //nyíl felső szár
-            ctx.moveTo(200*scale,100*scale);
-            ctx.lineTo(198*scale,98*scale);
+            ctx.beginPath(); //nyíl felső szár (＾Ｕ＾)ノ
+            ctx.moveTo(width,height/2);
+            ctx.lineTo(width-2*scale,height/2-2*scale);
             ctx.stroke();
             ctx.beginPath(); //nyíl alsó szár
-            ctx.moveTo(200*scale,100*scale);
-            ctx.lineTo(198*scale,102*scale);
+            ctx.moveTo(width,height/2);
+            ctx.lineTo(width-2*scale,height/2+2*scale);
             ctx.stroke();
 
             //y tengely
             ctx.beginPath(); //tengely
-            ctx.moveTo(100*scale,0);
-            ctx.lineTo(100*scale,200*scale);
+            ctx.moveTo(width/2,0);
+            ctx.lineTo(width/2,height);
             ctx.stroke();
             ctx.beginPath(); //nyíl bal szár
-            ctx.moveTo(100*scale,0);
-            ctx.lineTo(98*scale,2*scale);
+            ctx.moveTo(width/2,0);
+            ctx.lineTo(width/2-2*scale,2*scale);
             ctx.stroke();
             ctx.beginPath(); //nyíl jobb szár
-            ctx.moveTo(100*scale,0);
-            ctx.lineTo(102*scale,2*scale);
+            ctx.moveTo(width/2,0);
+            ctx.lineTo(width/2+2*scale,2*scale);
             ctx.stroke();
 
             labels(); //feliratok a tengelyek mentén
+
+            draw(); // draw ╰(*°▽°*)╯
         }
 
         function grid(){
             let posY=0;
             let posX=0;
             ctx.lineWidth=0.5;
+            ctx.strokeStyle="black";
             while(posY<=200*scale){
                 ctx.beginPath(); // y
                 ctx.moveTo(posY,0);
@@ -145,43 +152,94 @@
         function labels(){
             let posX=0;
             let posY=0;
-            ctx.translate(100*scale,100*scale);
-            while(posX<=100*scale){
-                ctx.fillText(`${posX/scale}`,posX,0);
-                
-                posX+=10*scale;
+            ctx.translate(width/2,height/2);
+            while(posX<=width/2){
+                ctx.fillText(`${posX/10}`,posX,0);
+                posX+=100;
             }
-            while(posY>=(-100)*scale){
-                ctx.fillText(`${posY/-scale}`,0,posY);
-                
-                posY-=10*scale;
+            while(posY<=height/2){
+                if(posY!=0){ctx.fillText(`-${posY/10}`,0,posY);
+                }
+                posY+=100;
             }
             posX=0;
             posY=0;
-            while(posY<=(100)*scale){
-                if(posY!=0){ctx.fillText(`-${posY/scale}`,0,posY);}
-                                
-                posY+=10*scale;
+            while(posX>=-width/2){
+                if(posX!=0){ctx.fillText(`${posX/10}`,posX,0);}
+                posX-=100;
             }
-            while(posX>=-100*scale){
-                if(posX!=0){ctx.fillText(`${posX/scale}`,posX,0);}
-                                
-                posX-=10*scale;
+            while(posY>=-height/2){
+                if(posY!=0){ctx.fillText(`${-posY/10}`,0,posY);}
+                posY-=100;
             }
-            ctx.translate(-100*scale,-100*scale);
+
+            ctx.translate(-width/2,-height/2);
+        }
+
+        function maxX(){
+            return parseInt(xInp.value);
+        }
+
+        function minX(){
+            return parseInt(-xInp.value);
+        }
+
+        function maxY(){
+            return parseInt(yInp.value);
+        }
+
+        function minY(){
+            return parseInt(-yInp.value);
+        }
+
+        function XC(x){
+            return (x - minX()) / (maxX() - minX()) * canvas.width;
+        }
+
+        function YC(y){
+            return canvas.height - (y - minY()) / (maxY() - minY()) * canvas.height;
         }
 
         function draw(){
-            let MaxX=parseInt(xInp.value); //max x
-            let MinX=parseInt(-xInp.value); //min x
-            let MaxY=parseInt(yInp.value); //min y
-            let MinY=parseInt(-yInp.value); //min y
-            let x=0;
-
-            function XC(x) {
-                return (x - MinX) / (MaxX - MinX * canvas.width);
+            var first = true;
+            var xstep = (100-(-100))/width;
+            var a = aInp.value;
+            var b = -bInp.value;
+            var c = -cInp.value;
+            ctx.strokeStyle="#002377"
+            if(c != 0){
+                ctx.beginPath();
+                for(var x = minX(); x <= maxX(); x+=xstep){
+                    // a(x-b)^2+c
+                    var y = (a*Math.pow(x-b,2))-c;
+                    if(first){
+                        ctx.moveTo(XC(x),YC(y));
+                        first = false;
+                    }
+                    else{
+                        ctx.lineTo(XC(x),YC(y));
+                    }
+                }
+                ctx.stroke();
             }
-        }
+            else{
+                // a*x-b
+                ctx.beginPath();
+                for(var x = minX(); x <= maxX(); x+=xstep){
+                    // a(x-b)^2+c
+                    var y=a*x-b;
+                    if(first){
+                        ctx.moveTo(XC(x),YC(y));
+                        first = false;
+                    }
+                    else{
+                        ctx.lineTo(XC(x),YC(y));
+                    }
+                }
+                ctx.stroke();
+                
+            }
+        } // slatt ¯\_(ツ)_/¯
     </script>
 </body>
 </html>

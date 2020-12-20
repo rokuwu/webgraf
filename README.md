@@ -6,7 +6,7 @@ Ez a repo a Webgraf verseny-hez van használva, ahova a megoldott (vagy akár f�
 
 4. Forduló
 
-1. Feladat - Not started
+1. Feladat - Done
 2. Feladat - Not started
 3. Feladat - Done
 
