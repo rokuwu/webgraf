@@ -52,7 +52,7 @@
         <input type="checkbox" name="grid" id="grid" onchange="drawCanvas();">
     </div>
 
-    <canvas id="canvas" width=2000 height=2000"></canvas>
+    <canvas id="canvas" width=2000 height=2000></canvas>
 
     <script>
         const aInp=document.getElementById("a");
@@ -79,6 +79,7 @@
                 grid();
             }
             init();
+            draw();
         }
 
         function init(){
@@ -170,9 +171,16 @@
             ctx.translate(-100*scale,-100*scale);
         }
 
-        draw();
         function draw(){
+            let MaxX=parseInt(xInp.value); //max x
+            let MinX=parseInt(-xInp.value); //min x
+            let MaxY=parseInt(yInp.value); //min y
+            let MinY=parseInt(-yInp.value); //min y
+            let x=0;
 
+            function XC(x) {
+                return (x - MinX) / (MaxX - MinX * canvas.width);
+            }
         }
     </script>
 </body>
