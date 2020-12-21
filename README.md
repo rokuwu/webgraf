@@ -6,15 +6,15 @@ Ez a repo a Webgraf verseny-hez van használva, ahova a megoldott (vagy akár f�
 
 4. Forduló
 
-1. Feladat - Done
-2. Feladat - Not started
-3. Feladat - Done
+1. Feladat - Done, tested
+2. Feladat - Done, tested
+3. Feladat - Done, tested
 
 ## Feladat leírások:
 
 1. Feladat:
 ```
-Készítsetek egy weboldalt, amely képes első-és másodfokú függvények ábrázolására! Az aktuális (másodfokú vagy elsőfokú) függvény paramétereit (a, b, c) egy űrlapon lehessen folyamatosan megváltoztatni! (Ha c értéke 0, akkor egy egyenest kell ábrázolni.) Az értéktartományt szintén folyamatosan lehessen állítani, kezdetben az X és az Y tengelyen is a [-100;10]0 tartományban vehessenek fel értékeket a függvények. (Pl. az y=ax+b függvényt csak a -100<=x<=100 és a -100<=y<=100 tartományban kell megjeleníteni.) Az értéktartományok az alább értéket kaphassák: 0,10,...,90,100. (Azaz tizesével lehessen ezeket változtatni.) Egy checkbox-szal meg lehessen adni, hogy a rácsvonalak ( x és y "irányban") megjelenítésre kerüljenek-e. A 7 paraméter bármelyik értékének változása frissítse a rajzot. A függvényt #002377 színben kell megjeleníteni. A tengelyeken a nyíl és a feliratok (X,Y) is legyenek megjelenítve. (110010|2 pont)
+Készítsetek egy weboldalt, amely képes első-és másodfokú függvények ábrázolására! Az aktuális (másodfokú vagy elsőfokú) függvény paramétereit (a, b, c) egy űrlapon lehessen folyamatosan megváltoztatni! (Ha c értéke 0, akkor egy egyenest kell ábrázolni.) Az értéktartományt szintén folyamatosan lehessen állítani, kezdetben az X és az Y tengelyen is a [-100;100] tartományban vehessenek fel értékeket a függvények. (Pl. az y=ax+b függvényt csak a -100<=x<=100 és a -100<=y<=100 tartományban kell megjeleníteni.) Az értéktartományok az alább értéket kaphassák: 0,10,...,90,100. (Azaz tizesével lehessen ezeket változtatni.) Egy checkbox-szal meg lehessen adni, hogy a rácsvonalak ( x és y "irányban") megjelenítésre kerüljenek-e. A 7 paraméter bármelyik értékének változása frissítse a rajzot. A függvényt #002377 színben kell megjeleníteni. A tengelyeken a nyíl és a feliratok (X,Y) is legyenek megjelenítve. (110010|2 pont)
 ```
 
 2. Feladat:
